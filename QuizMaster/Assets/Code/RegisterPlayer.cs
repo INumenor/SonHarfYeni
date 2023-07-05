@@ -8,8 +8,8 @@ using TMPro;
 
 public class RegisterPlayer : MonoBehaviour
 {
-    string send;
-    void PostData() => StartCoroutine(Post("http://appjam.inseres.com/servicekelimeoyunu/Service/SendWord", processJson(send)));
+    string Player,Email,Password;
+    public void PostData() => StartCoroutine(Post("http://localhost:8080/ServiceKelimeOyunu/Service/registerPlayer", processJson(Player,Email,Password)));
     IEnumerator Post(string url, string bodyJsonString)
     {
         var request = new UnityWebRequest(url, "POST");
@@ -23,29 +23,39 @@ public class RegisterPlayer : MonoBehaviour
     }
     private void processJsonData(string _url)
     {
-        Debug.Log("Geldim");
-        TestWordJson TestWord = JsonUtility.FromJson<TestWordJson>(_url);
-        Debug.Log(TestWord.new_word);
-        Debug.Log(TestWord.status);
+        Status status = JsonUtility.FromJson<Status>(_url);
+        Debug.Log(status.status);
     }
 
-    private string processJson(string _url)
+    private string processJson(string Player,string Email ,string Password)
     {
-        Debug.Log(_url);
-        Word word2 = new Word();
-        word2.word = _url;
-        string json = JsonUtility.ToJson(word2);
-        Debug.Log(json);
+        Debug.Log(Player);
+        Register registerpl = new Register();
+        registerpl.playerName = Player;
+        registerpl.email = Email;
+        registerpl.password = Password;
+        string json = JsonUtility.ToJson(registerpl);
         return json;
     }
 
-    //public void ReadInput(string s)
-    //{
-    //    send = s;
-    //    Debug.Log(send);
-    //}
-    private class Word
+    public void ReadInputPlayer(string s)
     {
-        public string word;
+        Player = s;
+    }
+    public void ReadInputEmail(string s)
+    {
+        Email = s;
+    }
+    public void ReadInputPassword(string s)
+    {
+        Password = s;
+    }
+
+    private class Register
+    {
+        public string playerName;
+        public string email;
+        public string password;
+
     }
 }

@@ -51,7 +51,6 @@ public class PostWord : MonoBehaviour
     public void ReadInput(string s)
     {
         send = s;
-        Debug.Log(send);
     }
     private class Word
     {
