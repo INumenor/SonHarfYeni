@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: db2816762737bed4a91e234d1ba1346d
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Street-Postah
+  fontNames:
+  - Street-Postah
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 315739cf5b20ae747aa546e1de9df9b7, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

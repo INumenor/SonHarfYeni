@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Title -->
+    <title>FAQ</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="img/core-img/favicon.ico">
+
+    <!-- Core Stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Responsive Stylesheet -->
+    <link rel="stylesheet" href="css/responsive.css">
+
+</head>
+
+<body class="light-version">
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="preload-content">
+            <div id="dream-load"></div>
+        </div>
+    </div>
+
+    <!-- ##### Header Area Start ##### -->
+    <header class="header-area fadeInDown" data-wow-delay="0.2s">
+        <div class="classy-nav-container light breakpoint-off">
+            <div class="container">
+                <!-- Classy Menu -->
+                <nav class="classy-navbar light justify-content-between" id="dreamNav">
+
+                    <!-- Logo -->
+                    <a class="nav-brand light" href="#"><img src="img/core-img/logo.png" alt="logo"> Montrix </a>
+
+                    <!-- Navbar Toggler -->
+                    <div class="classy-navbar-toggler demo">
+                        <span class="navbarToggler"><span></span><span></span><span></span></span>
+                    </div>
+
+                    <!-- Menu -->
+                    <div class="classy-menu">
+
+                        <!-- close btn -->
+                        <div class="classycloseIcon">
+                            <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+                        </div>
+
+                        <!-- Nav Start -->
+                        <div class="classynav">
+                            <ul id="nav">
+                                <li><a href="#home">Home</a>
+                                    <ul class="dropdown">
+                                        <li><a href="index-demo-1.html">Home style 1</a></li>
+                                        <li><a href="index-demo-2.html">Home style 2</a></li>
+                                        <li><a href="index-demo-3.html">Home style 3</a></li>
+                                        <li><a href="index-demo-4.html">Home style 4</a></li>
+                                        <li><a href="index-demo-5.html">Home style 5</a></li>
+                                        <li><a href="index-demo-6.html">Home style 6</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="about-us.html">About Us</a></li>
+                                <li><a href="services.html">Services</a></li>
+                                <li><a href="faq.html">FAQ</a></li>
+                                <li><a href="#blog">Blog</a>
+                                    <ul class="dropdown">
+                                        <li><a href="index-blog.html">Blog Posts</a></li>
+                                        <li><a href="index-blog-with-sidebar.html">Sidebar Blog </a></li>
+                                        <li><a href="index-single-blog.html">Blog Details</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="contact-us.html">Contact</a></li>
+                            </ul>
+
+                            <!-- Button -->
+                            <a href="#" class="btn login-btn ml-50">Log in</a>
+                        </div>
+                        <!-- Nav End -->
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <!-- ##### Header Area End ##### -->
+
+    <!-- ##### Welcome Area Start ##### -->
+    <div class="breadcumb-area clearfix dzsparallaxer auto-init" data-options='{direction: "normal"}'>
+        <div class="divimage dzsparallaxer--target" style="width: 101%; height: 130%; background-image: url(img/bg-img/bg-2.jpg)"></div>
+        <!-- breadcumb content -->
+        <div class="breadcumb-content">
+            <div class="container h-100">
+                <div class="row h-100 align-items-center">
+                    <div class="col-12">
+                        <nav aria-label="breadcrumb" class="breadcumb--con text-center">
+                            <h2 class="w-text title wow fadeInUp" data-wow-delay="0.2s">FAQ Questions</h2>
+                            <ol class="breadcrumb justify-content-center wow fadeInUp" data-wow-delay="0.4s">
+                                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">FAQ</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ##### Welcome Area End ##### -->
+
+    <div class="faq-timeline-area transparent section-padding-100-85" id="faq">
+        <div class="container">
+            <div class="section-heading text-center">
+                <!-- Dream Dots -->
+                <div class="dream-dots justify-content-center fadeInUp" data-wow-delay="0.2s">
+                    <img src="img/svg/section-icon-5.svg" alt="">
+                </div>
+                <h2 class="d-blue bold fadeInUp" data-wow-delay="0.3s"> Frequently Questions</h2>
+                <p class="fadeInUp" data-wow-delay="0.4s">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis accumsan nisi Ut ut felis congue nisl hendrerit commodo.</p>
+            </div>
+            <div class="row">
+                <div class="col-12 col-lg-6 offset-lg-0 col-md-8 offset-md-2 col-sm-10 offset-sm-1">
+                    <img src="img/svg/about3.svg" alt="" class="center-block img-responsive">
+                </div>
+                <div class="col-12 col-lg-6 col-md-12">
+                    <div class="dream-faq-area mt-s ">
+                        <dl style="margin-bottom:0">
+                            <!-- Single FAQ Area -->
+                            <dt class="wave fadeInUp" data-wow-delay="0.2s">What are the objectives of this Software?</dt>
+                            <dd class="fadeInUp" data-wow-delay="0.3s">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore omnis quaerat nostrum, pariatur ipsam sunt accusamus enim necessitatibus est fugiat, assumenda dolorem, deleniti corrupti cupiditate ipsum, dolorum voluptatum esse error?</p>
+                            </dd>
+                            <!-- Single FAQ Area -->
+                            <dt class="wave fadeInUp" data-wow-delay="0.3s">What is the best features and services we deiver?</dt>
+                            <dd style="display: none;">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore omnis quaerat nostrum, pariatur ipsam sunt accusamus enim necessitatibus est fugiat, assumenda dolorem, deleniti corrupti cupiditate ipsum, dolorum voluptatum esse error?</p>
+                            </dd>
+                            <!-- Single FAQ Area -->
+                            <dt class="wave fadeInUp" data-wow-delay="0.4s">Why this app important to me?</dt>
+                            <dd style="display: none;">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore omnis quaerat nostrum, pariatur ipsam sunt accusamus enim necessitatibus est fugiat, assumenda dolorem, deleniti corrupti cupiditate ipsum, dolorum voluptatum esse error?</p>
+                            </dd>
+                            <!-- Single FAQ Area -->
+                            <dt class="wave fadeInUp" data-wow-delay="0.5s">how may I take part in and purchase this Software?</dt>
+                            <dd style="display: none;">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore omnis quaerat nostrum, pariatur ipsam sunt accusamus enim necessitatibus est fugiat, assumenda dolorem, deleniti corrupti cupiditate ipsum, dolorum voluptatum esse error?</p>
+                            </dd>
+                        </dl>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+    <section class="how section-padding-100-70 relative bub-left  hex-pat-2" >
+
+        <div class="container">
+
+            <div class="section-

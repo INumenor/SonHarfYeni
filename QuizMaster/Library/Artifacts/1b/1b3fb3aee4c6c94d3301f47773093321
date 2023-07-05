@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="890" height="541" viewBox="0 0 890 541">
+  <g fill="#FFF" opacity=".3" transform="rotate(-30.897 489.6259 -1430.4263)">
+    <use xlink:href="#path0_fill"/>
+    <use xlink:href="#path1_fill"/>
+  </g>
+  <g fill="#FFF" opacity=".15" transform="rotate(-114.633 527.4658 -122.831)">
+    <use xlink:href="#path2_fill"/>
+    <use xlink:href="#path3_fill"/>
+    <use xlink:href="#path4_fill"/>
+    <use xlink:href="#path5_fill"/>
+  </g>
+  <use fill="#FFF" opacity=".3" transform="rotate(-26.807 599.2003 -50.124)" xlink:href="#path6_fill"/>
+  <use fill="#FFF" filter="url(#filter0_f)" opacity=".3" transform="rotate(-16.583 1551.79 131.545)" xlink:href="#path7_fill"/>
+  <g fill="#FFF" opacity=".2" transform="rotate(-32.15 749.785 -253.7589)">
+    <use xlink:href="#path8_fill"/>
+    <use xlink:href="#path9_fill"/>
+    <use xlink:href="#path10_fill"/>
+  </g>
+  <use fill="#FFF" opacity=".2" transform="rotate(-35.764 204.1143 -290.0328)" xlink:href="#path11_fill"/>
+  <use fill="#FFF" filter="url(#filter1_f)" opacity=".3" transform="rotate(-35.764 71.9508 24.9257)" xlink:href="#path12_fill"/>
+  <g fill="#FFF" opacity=".2" transform="rotate(-28.494 714.2598 -1434.754)">
+    <use xlink:href="#path13_fill"/>
+    <use xlink:href="#path14_fill"/>
+    <use xlink:href="#path15_fill"/>
+    <use xlink:href="#path16_fill"/>
+    <use xlink:href="#path17_fill"/>
+    <use xlink:href="#path18_fill"/>
+  </g>
+  <defs>
+    <filter id="filter0_f" width="115" height="120" x="-481" y="1094" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+      <feGaussianBlur result="effect1_foregroundBlur" stdDeviation="5"/>
+    </filter>
+    <filter id="filter1_f" width="93" height="92" x="-513" y="672" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+      <feGaussianBlur result="effect1_foregroundBlur" stdDeviation="4"/>
+    </filter>
+    <path id="path0_fill" d="M3.2 6.353H0v12.7058h3.2V6.3529z"/>
+    <path id="path1_fill" d="M28.8 0v1.9011l-24 5.2952v16.6272c0 .729.4992 1.3627 1.2128 1.5422l6.4 1.5882c.128.0302.2592.0461.3872.0461.4976 0 .9728-.2303 1.28-.6353l3.952-5.2301L28.8 23.5075v1.9043H32V0h-3.2zM12.1568 23.6155L8 22.5831v-3.664l6.6032 1.458-2.4464 3.2384z"/>
+    <path id="path2_fill" d="M3.7241 29.791V0H0v33.5151h33.5169V29.791H3.7241z"/>
+    <path id="path3_fill" d="M27.9308 20.4807H5.5862v7.4482h22.3446v-7.4482z"/>
+    <path id="path4_fill" d="M16.7585 11.1705H5.5862v7.4482h11.1723v-7.4482z"/>
+    <path id="path5_fill" d="M20.4826 1.862H5.5862v7.4464h14.8964V1.862z"/>
+    <path id="path6_fill" d="M23.0476 0C11.4945 0 2.0952 8.5226 2.0952 19c0 3.6628 1.1336 7.1609 3.2938 10.2093L0 38h23.0476C34.6008 38 44 29.4774 44 19S34.6008 0 23.0476 0zm-8.3809 21.1111c-1.1587 0-2.0953-.9437-2.0953-2.1111s.9366-2.1111 2.0953-2.1111c1.1586 0 2.0952.9437 2.0952 2.1111s-.9366 2.1111-2.0952 2.1111zm8.3809 0c-1.1586 0-2.0952-.9437-2.0952-2.1111s.9366-2.1111 2.0952-2.1111c1.1587 0 2.0953.9437 2.0953 2.1111s-.9366 2.1111-2.0953 2.1111zm8.381 0c-1.1587 0-2.0953-.9437-2.0953-2.1111s.9366-2.1111 2.0953-2.1111c1.1586 0 2.0952.9437 2.0952 2.1111s-.9366 2.1111-2.0952 2.1111z"/>
+    <path id="path7_fill" d="M52.0451 0C25.9563 0 4.7314 19.2453 4.7314 42.905c0 8.2711 2.5597 16.1704 7.4377 23.0543L0 85.81h52.0451c26.0889 0 47.3138-19.2453 47.3138-42.905S78.134 0 52.0451 0zM33.1196 47.6722c-2.6164 0-4.7313-2.1309-4.7313-4.7672s2.1149-4.7672 4.7313-4.7672c2.6165 0 4.7314 2.1309 4.7314 4.7672s-2.1149 4.7672-4.7314 4.7672zm18.9255 0c-2.6164 0-4.7313-2.1309-4.7313-4.7672s2.1149-4.7672 4.7313-4.7672c2.6165 0 4.7314 2.1309 4.7314 4.7672s-2.1149 4.7672-4.7314 4.7672zm18.9256 0c-2.6165 0-4.7314-2.1309-4.7314-4.7672s2.1149-4.7672 4.7314-4.7672c2.6164 0 4.7313 2.1309 4.7313 4.7672s-2.1149 4.7672-4.7313 4.7672z"/>
+    <path id="path8_fill" d="M17.2634 22.8941c4.7583 0 8.6317-3.8381 8.6317-8.5529 0-4.7149-3.8734-8.55
