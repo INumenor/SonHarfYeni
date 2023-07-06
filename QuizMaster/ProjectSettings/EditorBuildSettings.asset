@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SonHarfFirstScene.unity
+    path: Assets/Scenes/LoginAndRegisterScene.unity
     guid: de6fe6bce6d566d4b9538a27c49be199
   - enabled: 1
     path: Assets/Scenes/OyunaGirSahnesi.unity
