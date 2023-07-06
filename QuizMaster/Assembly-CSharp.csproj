@@ -57,6 +57,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Code\APIHelper.cs" />
+    <Compile Include="Assets\Code\BotGameInfo.cs" />
+    <Compile Include="Assets\Code\BotGamePost.cs" />
+    <Compile Include="Assets\Code\BotGameStart.cs" />
     <Compile Include="Assets\Code\CameraAnchor.cs" />
     <Compile Include="Assets\Code\ComeApi.cs" />
     <Compile Include="Assets\Code\Deneme.cs" />
@@ -86,6 +89,7 @@
     <Compile Include="Assets\Code\TestWord.cs" />
     <Compile Include="Assets\Code\Turn.cs" />
     <Compile Include="Assets\Code\V2\BackgroundControl.cs" />
+    <Compile Include="Assets\Code\V2\BotGameStatus.cs" />
     <Compile Include="Assets\Code\V2\BİlgiButonuAktifleştirme.cs" />
     <Compile Include="Assets\Code\V2\GirişEkranıButonAktifleştirme.cs" />
     <Compile Include="Assets\Code\V2\InfoRoomReturn.cs" />
@@ -115,6 +119,7 @@
     <Compile Include="Assets\Code\V4\Puan.cs" />
     <Compile Include="Assets\Code\ViewportHandler.cs" />
     <Compile Include="Assets\Code\WebPostExample.cs" />
+    <Compile Include="Assets\Code\logintest.cs" />
     <Compile Include="Assets\Code\success.cs" />
     <Compile Include="Assets\UI\Pagination\Events\DragEventAnalysis.cs" />
     <Compile Include="Assets\UI\Pagination\Events\PassThroughDragEvents.cs" />
