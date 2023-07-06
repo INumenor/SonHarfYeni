@@ -25,10 +25,10 @@ public class LoginPlayer : MonoBehaviour
     private void processJsonData(string _url)
     {
         Status status = JsonUtility.FromJson<Status>(_url);
-        Debug.Log(status.status);
         if("success" == status.status)
         {
-            SceneManager.LoadScene(4);
+            GlobalKullanıcıBilgileri._OyuncuIsim = Player;
+            SceneManager.LoadScene(1);
         }
     }
 

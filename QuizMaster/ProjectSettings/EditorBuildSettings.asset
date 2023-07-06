@@ -9,8 +9,11 @@ EditorBuildSettings:
     path: Assets/Scenes/LoginAndRegisterScene.unity
     guid: de6fe6bce6d566d4b9538a27c49be199
   - enabled: 1
-    path: Assets/Scenes/OyunaGirSahnesi.unity
-    guid: 16e440b6ef0ec234a871d3790c34244b
+    path: Assets/Scenes/MainScene.unity
+    guid: ea699328667d9fc4bb42d4f05a5b635a
+  - enabled: 1
+    path: Assets/Scenes/SonHarfSingleGameScene.unity
+    guid: d25c39fb88fa37c4fba497bbfae97a5f
   - enabled: 1
     path: Assets/Scenes/OyunYaratAraEkran.unity
     guid: 551cd2f7aa62c7741997d7b398fbc377
@@ -20,7 +23,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/EkipSahnesi.unity
     guid: 71e2aa6db5338a64aa63598ef3183062
-  - enabled: 1
-    path: Assets/Scenes/SonHarfSingleGameScene.unity
-    guid: d25c39fb88fa37c4fba497bbfae97a5f
   m_configObjects: {}
