@@ -16,10 +16,10 @@ public class Settings : MonoBehaviour
     [SerializeField] Slider KisiSayisiSlider;
     public string RoomNameText;
     public bool PrivatePublicButton=false;
-    public bool TimeButton;
+    public bool TimeButton=false;
     public int TimeBreak;
-    public int NumberOfPeople;
-    public bool PointType;
+    public int NumberOfPeople=2;
+    public bool PointType=false;
 
     private void Update()
     {
@@ -92,49 +92,53 @@ public class Settings : MonoBehaviour
         Debug.Log(PointType);
     }
 
-    //void Start()
-    //{
-    //    keycode = GameObject.Find("KeyCode").GetComponent<TextMeshProUGUI>();
-    //    StartCoroutine(Post("http://appjam.inseres.com/servicekelimeoyunu/Service/CreateRoom", processJson(GlobalKullanıcıBilgileri._OyuncuIsim)));
-    //}
-    //IEnumerator Post(string url, string bodyJsonString)
-    //{
-    //    var request = new UnityWebRequest(url, "POST");
-    //    byte[] bodyRaw = Encoding.UTF8.GetBytes(bodyJsonString);
-    //    request.uploadHandler = (UploadHandler)new UploadHandlerRaw(bodyRaw);
-    //    request.downloadHandler = (DownloadHandler)new DownloadHandlerBuffer();
-    //    request.SetRequestHeader("Content-Type", "application/json");
-    //    yield return request.SendWebRequest();
-    //    Debug.Log("Status Code: " + request.responseCode);
-    //    processJsonData(request.downloadHandler.text);
-    //}
-    //private void processJsonData(string _url)
-    //{
-    //    Debug.Log("Geldim");
-    //    Key key = JsonUtility.FromJson<Key>(_url);
-    //    GlobalKullanıcıBilgileri._Room_key = key.room_key;
-    //    keycode.text = key.room_key;
-    //    //if(key.status == "success")
-    //    //{
-    //    //    Oyuncu1tik.active = true;
-    //    //    GameObject.Find("Oyuncu1").GetComponent<TextMeshProUGUI>().text = GlobalKullanıcıBilgileri._OyuncuIsim;
-    //    //    GameObject.Find("Oyuncu1").GetComponent<TextMeshProUGUI>().color = Color.white;
-    //    //}
-    //    Debug.Log(key.room_key);
-    //    Debug.Log(key.status);
-    //}
+    public void Olustur()
+    {
+        if (RoomNameText != null && PrivatePublicButton != null && TimeButton != null && NumberOfPeople != null && PointType != null)
+        {
+            StartCoroutine(Post("http://appjam.inseres.com/servicekelimeoyunu/Service/CreateRoom", processJson(RoomNameText, GlobalKullanıcıBilgileri._OyuncuIsim, PrivatePublicButton, TimeButton, NumberOfPeople, PointType, TimeBreak))); ;
+        }
+    }
+    IEnumerator Post(string url, string bodyJsonString)
+    {
+        var request = new UnityWebRequest(url, "POST");
+        byte[] bodyRaw = Encoding.UTF8.GetBytes(bodyJsonString);
+        request.uploadHandler = (UploadHandler)new UploadHandlerRaw(bodyRaw);
+        request.downloadHandler = (DownloadHandler)new DownloadHandlerBuffer();
+        request.SetRequestHeader("Content-Type", "application/json");
+        yield return request.SendWebRequest();
+        Debug.Log("Status Code: " + request.responseCode);
+        processJsonData(request.downloadHandler.text);
+    }
+    private void processJsonData(string _url)
+    { 
+        Key key = JsonUtility.FromJson<Key>(_url);
+        GlobalKullanıcıBilgileri._Room_key = key.room_key;
+       
+    }
 
-    //private string processJson(string _url)
-    //{
-    //    Debug.Log(_url);
-    //    PlayerName word2 = new PlayerName();
-    //    word2.playerName = _url;
-    //    string json = JsonUtility.ToJson(word2);
-    //    Debug.Log(json);
-    //    return json;
-    //}
-    //private class PlayerName
-    //{
-    //    public string playerName;
-    //}
+    private string processJson(string RoomNameText, string PlayerName,bool PrivatePublicButton, bool TimeButton,  int NumberOfPeople, bool PointType,int TimeBreak)
+    {
+        SettingRoom sr = new SettingRoom();
+        sr.playerName = PlayerName;
+        sr.RoomNameText = RoomNameText;
+        sr.PrivatePublicButton = PrivatePublicButton;
+        sr.TimeButton = TimeButton;
+        sr.NumberOfPeople = NumberOfPeople;
+        sr.PointType = PointType;
+        sr.TimeBreak = TimeBreak;
+        string json = JsonUtility.ToJson(sr);
+        return json;
+    }
+    private class SettingRoom
+    {
+        public string playerName;
+        public string RoomNameText;
+        public bool PrivatePublicButton;
+        public bool TimeButton;
+        public int NumberOfPeople;
+        public bool PointType;
+        public int TimeBreak;
+
+    }
 }
