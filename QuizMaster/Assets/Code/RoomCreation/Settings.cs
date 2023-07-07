@@ -82,12 +82,12 @@ public class Settings : MonoBehaviour
         if (Point.active==true)
         {
             Point.active = false;
-            PointType = true;
+            PointType = false;
         }
         else 
         { 
             Point.active = true;
-            PointType = false; 
+            PointType = true; 
         }
         Debug.Log(PointType);
     }
@@ -96,7 +96,7 @@ public class Settings : MonoBehaviour
     {
         if (RoomNameText != null && PrivatePublicButton != null && TimeButton != null && NumberOfPeople != null && PointType != null)
         {
-            StartCoroutine(Post("http://appjam.inseres.com/servicekelimeoyunu/Service/CreateRoom", processJson(RoomNameText, GlobalKullanıcıBilgileri._OyuncuIsim, PrivatePublicButton, TimeButton, NumberOfPeople, PointType, TimeBreak))); ;
+            StartCoroutine(Post("http://localhost:8080/ServiceKelimeOyunu/Service/CreateOnlineRoom", processJson(RoomNameText,"Batuhan", PrivatePublicButton, TimeButton, NumberOfPeople, PointType, TimeBreak))); ;
         }
     }
     IEnumerator Post(string url, string bodyJsonString)
@@ -113,32 +113,33 @@ public class Settings : MonoBehaviour
     private void processJsonData(string _url)
     { 
         Key key = JsonUtility.FromJson<Key>(_url);
-        GlobalKullanıcıBilgileri._Room_key = key.room_key;
-       
+        //GlobalKullanıcıBilgileri._Room_key = key.room_key;
+        Debug.Log(key.status);
+        Debug.Log(key.room_key);
     }
 
     private string processJson(string RoomNameText, string PlayerName,bool PrivatePublicButton, bool TimeButton,  int NumberOfPeople, bool PointType,int TimeBreak)
     {
         SettingRoom sr = new SettingRoom();
         sr.playerName = PlayerName;
-        sr.RoomNameText = RoomNameText;
-        sr.PrivatePublicButton = PrivatePublicButton;
-        sr.TimeButton = TimeButton;
-        sr.NumberOfPeople = NumberOfPeople;
-        sr.PointType = PointType;
-        sr.TimeBreak = TimeBreak;
+        sr.roomName = RoomNameText;
+        sr.isPrivate = PrivatePublicButton;
+        sr.isTimeOpen = TimeButton;
+        sr.numberOfPeople = NumberOfPeople;
+        sr.pointType = PointType;
+        sr.time = TimeBreak;
         string json = JsonUtility.ToJson(sr);
         return json;
     }
     private class SettingRoom
     {
+        public string roomName;
         public string playerName;
-        public string RoomNameText;
-        public bool PrivatePublicButton;
-        public bool TimeButton;
-        public int NumberOfPeople;
-        public bool PointType;
-        public int TimeBreak;
+        public bool isPrivate;
+        public bool isTimeOpen;
+        public int numberOfPeople;
+        public bool pointType;
+        public int time;
 
     }
 }
