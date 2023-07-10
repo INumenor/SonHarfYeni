@@ -63,6 +63,7 @@
     <Compile Include="Assets\Code\CameraAnchor.cs" />
     <Compile Include="Assets\Code\ComeApi.cs" />
     <Compile Include="Assets\Code\Deneme.cs" />
+    <Compile Include="Assets\Code\GameStartedInfo.cs" />
     <Compile Include="Assets\Code\GetMetod.cs" />
     <Compile Include="Assets\Code\GetRandomWord.cs" />
     <Compile Include="Assets\Code\GlobalKullanıcıBilgileri.cs" />
