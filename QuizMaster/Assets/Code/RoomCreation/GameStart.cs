@@ -19,7 +19,7 @@ public class GameStart : MonoBehaviour
     [SerializeField] GameObject Content;
     void Start()
     {
-        StartCoroutine(Post("http://localhost:8080/ServiceKelimeOyunu/Service/getOpenRooms", "{}"));
+        StartCoroutine(Post("http://localhost:8080/ServiceKelimeOyunu/Service/getRoomsSettingsInfo", processJson("Batuhan", "396589")));
     }
 
 
@@ -36,8 +36,7 @@ public class GameStart : MonoBehaviour
     }
     private void processJsonData(string req)
     {
-        string jsonString = fixJson(req);
-        LobbySQL lobby = JsonUtility.FromJson<LobbySQL>(jsonString);
+        LobbyInfoSQL lobby = JsonUtility.FromJson<LobbyInfoSQL>(req);
         Debug.Log(lobby.RoomName.ToString());
         RoomName.GetComponent<Text>().text = "Oda İsmi :" + lobby.RoomName.ToString();
         RoomKey.GetComponent<Text>().text = lobby.RoomKey.ToString();
@@ -48,20 +47,38 @@ public class GameStart : MonoBehaviour
         RoomType.GetComponent<Text>().text = lobby.isPrivate.ToString();
         isTime.GetComponent<Text>().text = lobby.Time.ToString();
         PuanType.GetComponent<Text>().text = lobby.PointType.ToString();
-
+        RawImage.GetComponentInChildren<Text>().text = players[0];
+        Debug.Log(players.Length);
         for (int i = 1; i < players.Length; i++)
         {
             GameObject clone = Instantiate(RawImage, new Vector3(RawImage.transform.position.x, RawImage.transform.position.y - 1.4f, RawImage.transform.position.z), RawImage.transform.rotation);
             Transform parentTransform = clone.transform;
             string[] cloneplayers = lobby.Players.Split(nokta, System.StringSplitOptions.RemoveEmptyEntries);
+            clone.GetComponentInChildren<Text>().text = players[i];
             clone.transform.parent = Content.transform;
-            clone.transform.localScale = new Vector3(1, 2, 1);
+            clone.transform.localScale = new Vector3(1, 0.5f, 1);
             RawImage = clone;
         }
     }
+
+    private string processJson(string _url, string room_key)
+    {
+        LobbyRoomInfo info = new LobbyRoomInfo();
+        info.playerName = _url;
+        info.roomKey = room_key;
+        string json = JsonUtility.ToJson(info);
+        Debug.Log(json);
+        return json;
+    }
+
     string fixJson(string value)
     {
         value = "{\"Items\":" + value + "}";
         return value;
+    }
+    private class LobbyRoomInfo
+    {
+        public string playerName;
+        public string roomKey;
     }
 }
