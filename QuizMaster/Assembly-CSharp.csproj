@@ -70,6 +70,8 @@
     <Compile Include="Assets\Code\KeyCode.cs" />
     <Compile Include="Assets\Code\KeyQuest.cs" />
     <Compile Include="Assets\Code\KlavyeAc.cs" />
+    <Compile Include="Assets\Code\LobbyList.cs" />
+    <Compile Include="Assets\Code\LobbySQL.cs" />
     <Compile Include="Assets\Code\LoginPlayer.cs" />
     <Compile Include="Assets\Code\NameAndCodeSend.cs" />
     <Compile Include="Assets\Code\OyunGirişİnfoRoom.cs" />
