@@ -86,6 +86,7 @@
     <Compile Include="Assets\Code\PostWord.cs" />
     <Compile Include="Assets\Code\RandomWord.cs" />
     <Compile Include="Assets\Code\RegisterPlayer.cs" />
+    <Compile Include="Assets\Code\RoomCreation\GameStart.cs" />
     <Compile Include="Assets\Code\RoomCreation\Settings.cs" />
     <Compile Include="Assets\Code\SahneGecis.cs" />
     <Compile Include="Assets\Code\SendWord.cs" />
