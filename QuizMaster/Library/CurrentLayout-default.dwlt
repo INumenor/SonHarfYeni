@@ -73,7 +73,7 @@ MonoBehaviour:
     y: 0
     width: 1920
     height: 997
-  m_MinSize: {x: 875, y: 542}
+  m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &4
 MonoBehaviour:
@@ -139,10 +139,10 @@ MonoBehaviour:
     y: 30
     width: 1920
     height: 947
-  m_MinSize: {x: 678, y: 492}
-  m_MaxSize: {x: 14001, y: 14042}
+  m_MinSize: {x: 679, y: 492}
+  m_MaxSize: {x: 14002, y: 14042}
   vertical: 0
-  controlID: 71
+  controlID: 127
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -167,7 +167,7 @@ MonoBehaviour:
   m_MinSize: {x: 403, y: 492}
   m_MaxSize: {x: 10001, y: 14042}
   vertical: 1
-  controlID: 72
+  controlID: 36
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -192,7 +192,7 @@ MonoBehaviour:
   m_MinSize: {x: 403, y: 221}
   m_MaxSize: {x: 8003, y: 4021}
   vertical: 0
-  controlID: 73
+  controlID: 80
 --- !u!114 &9
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -301,9 +301,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 
-      m_LastClickedID: 0
-      m_ExpandedIDs: d4ddffffeaddffffd4deffffeedeffff5cfbffff563e0000083f0000323f00001c4000004a500000fc50000010520000
+      m_SelectedIDs: d45e0000
+      m_LastClickedID: 24276
+      m_ExpandedIDs: 66ebffff28f1ffff4af1ffff6ef1ffffcaf2ffffe4f2ffff40f4ffffe8f5fffff8f5ffffa0f7fffffcf8ffff16f9ffff3af9ffff52f9ffff68f9ffff5cfbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -363,9 +363,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 0.86151266, y: 0.36042395, z: -2.8262155}
+    m_Target: {x: 0.70182335, y: 0.22260852, z: -0.23709925}
     speed: 2
-    m_Value: {x: 0.86151266, y: 0.36042395, z: -2.8262155}
+    m_Value: {x: 0.8089278, y: 0.19313024, z: -0.22052412}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -415,9 +415,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 3.619444
+    m_Target: 4.3930697
     speed: 2
-    m_Value: 3.619444
+    m_Value: 4.600073
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -481,20 +481,20 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scenes
+    - Assets/Code
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Scenes
+  - Assets/Code
   m_LastFoldersGridSize: -1
   m_LastProjectPath: F:\Githubyeni\SonHarfYeni\QuizMaster
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 186}
-    m_SelectedIDs: 4c410000
-    m_LastClickedID: 16716
-    m_ExpandedIDs: 000000003e41000040410000424100004a41000000ca9a3b
+    scrollPos: {x: 0, y: 111}
+    m_SelectedIDs: 3e410000
+    m_LastClickedID: 16702
+    m_ExpandedIDs: 000000003e41000040410000424100004841000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -549,7 +549,7 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 0
+    m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c6230000b00100009a3f0000ea4100000000000014540000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -716,7 +716,7 @@ MonoBehaviour:
       y: 21
       width: 1074
       height: 634
-    m_Scale: {x: 0.4615256, y: 0.46152556}
+    m_Scale: {x: 0.24765624, y: 0.24765626}
     m_Translation: {x: 537, y: 317}
     m_MarginLeft: 0
     m_MarginRight: 0
@@ -724,10 +724,10 @@ MonoBehaviour:
     m_MarginBottom: 0
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
-      x: -1163.5325
-      y: -686.85254
-      width: 2327.065
-      height: 1373.7051
+      x: -2168.3281
+      y: -1280
+      width: 4336.6562
+      height: 2560
     m_MinimalGUI: 1
   m_defaultScale: 0.24765626
   m_LastWindowPixelSize: {x: 1074, y: 655}
