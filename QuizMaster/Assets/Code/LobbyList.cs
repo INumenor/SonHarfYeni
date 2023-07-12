@@ -20,12 +20,22 @@ public class LobbyList : MonoBehaviour
     GameObject ScRoomType;
     GameObject ScPuanType;
     [SerializeField] GameObject Button;
+    GameObject CopyButton;
     [SerializeField] GameObject Content;
+    [SerializeField] List<GameObject> clones;
     void Start()
     {
         StartCoroutine(Post("http://localhost:8080/ServiceKelimeOyunu/Service/getOpenRooms", "{}"));
     }
 
+    public void PostData()
+    {
+        for(int i = 0; i < clones.Count; i++)
+        {
+            Destroy(clones[i]);
+        }
+        StartCoroutine(Post("http://localhost:8080/ServiceKelimeOyunu/Service/getOpenRooms", "{}"));
+    }
 
     IEnumerator Post(string url, string bodyJsonString)
     {
@@ -42,7 +52,6 @@ public class LobbyList : MonoBehaviour
     {
         string jsonString = fixJson(req);
         LobbySQL[] lobby = JsonHelper.FromJson<LobbySQL>(jsonString);
-        Debug.Log(lobby[0].RoomName.ToString());
         RoomName.GetComponent<Text>().text = "Oda İsmi :" + lobby[0].RoomName.ToString();
 
         string[] nokta = { ";;;" };
@@ -52,12 +61,12 @@ public class LobbyList : MonoBehaviour
         RoomType.GetComponent<Text>().text = lobby[0].isPrivate.ToString();
         isTime.GetComponent<Text>().text = lobby[0].Time.ToString();
         PuanType.GetComponent<Text>().text = lobby[0].PointType.ToString();
-        ScRoomName = RoomName;
-        ScRoomPlayers = RoomPlayers;
-        Debug.Log(lobby.Length);
+        Button.name = lobby[0].RoomKey;
+        
+        CopyButton = Button;
         for (int i = 1; i < lobby.Length; i++)
         {
-            GameObject clone = Instantiate(Button, new Vector3(Button.transform.position.x, Button.transform.position.y - 1.4f, Button.transform.position.z), Button.transform.rotation);
+            GameObject clone = Instantiate(CopyButton, new Vector3(CopyButton.transform.position.x, CopyButton.transform.position.y - 1.4f, CopyButton.transform.position.z), CopyButton.transform.rotation);
             Transform parentTransform = clone.transform;
             GameObject firstChild = parentTransform.GetChild(0).gameObject;
             GameObject secondChild = parentTransform.GetChild(1).gameObject;
@@ -71,10 +80,13 @@ public class LobbyList : MonoBehaviour
             thridChild.GetComponent<Text>().text = lobby[i].isPrivate.ToString();
             fourthChild.GetComponent<Text>().text = lobby[i].Time.ToString();
             fifthChild.GetComponent<Text>().text = lobby[i].PointType.ToString();
+            clone.name = lobby[i].RoomKey;
+            clone.GetComponent<Button>().onClick.Equals(clone);
 
             clone.transform.parent = Content.transform;
             clone.transform.localScale = new Vector3(1, 2, 1);
-            Button = clone;
+            CopyButton = clone;
+            clones.Add(clone);
         }
 
     }

@@ -15,6 +15,9 @@ EditorBuildSettings:
     path: Assets/Scenes/SonHarfSingleGameScene.unity
     guid: d25c39fb88fa37c4fba497bbfae97a5f
   - enabled: 1
+    path: Assets/Scenes/GameLobby.unity
+    guid: 311ef00f665726d4481a423afa3856e9
+  - enabled: 1
     path: Assets/Scenes/OyunYaratAraEkran.unity
     guid: 551cd2f7aa62c7741997d7b398fbc377
   - enabled: 1

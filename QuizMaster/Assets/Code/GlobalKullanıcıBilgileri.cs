@@ -6,6 +6,7 @@ public class GlobalKullanıcıBilgileri : MonoBehaviour
 {
     private static string OyuncuIsim;
     public static string Room_key;
+    public static string LoginRoom_key;
     public static string Day;
     public static string playerTurn;
     public static bool Music;

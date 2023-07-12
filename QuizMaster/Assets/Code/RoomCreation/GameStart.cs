@@ -19,9 +19,8 @@ public class GameStart : MonoBehaviour
     [SerializeField] GameObject Content;
     void Start()
     {
-        StartCoroutine(Post("http://localhost:8080/ServiceKelimeOyunu/Service/getRoomsSettingsInfo", processJson("Batuhan", "396589")));
+        StartCoroutine(Post("http://localhost:8080/ServiceKelimeOyunu/Service/getRoomsSettingsInfo", processJson(GlobalKullanıcıBilgileri._OyuncuIsim,GlobalKullanıcıBilgileri._Room_key)));
     }
-
 
     IEnumerator Post(string url, string bodyJsonString)
     {

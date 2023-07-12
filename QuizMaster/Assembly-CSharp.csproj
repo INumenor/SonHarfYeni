@@ -72,6 +72,7 @@
     <Compile Include="Assets\Code\KeyQuest.cs" />
     <Compile Include="Assets\Code\KlavyeAc.cs" />
     <Compile Include="Assets\Code\LobbyList.cs" />
+    <Compile Include="Assets\Code\LobbyLogin.cs" />
     <Compile Include="Assets\Code\LobbySQL.cs" />
     <Compile Include="Assets\Code\LoginPlayer.cs" />
     <Compile Include="Assets\Code\NameAndCodeSend.cs" />
@@ -90,6 +91,7 @@
     <Compile Include="Assets\Code\RoomCreation\GameStart.cs" />
     <Compile Include="Assets\Code\RoomCreation\LobbyRoomInfoSQL.cs" />
     <Compile Include="Assets\Code\RoomCreation\Settings.cs" />
+    <Compile Include="Assets\Code\RoomKeyControl.cs" />
     <Compile Include="Assets\Code\SahneGecis.cs" />
     <Compile Include="Assets\Code\SendWord.cs" />
     <Compile Include="Assets\Code\TestWord.cs" />
