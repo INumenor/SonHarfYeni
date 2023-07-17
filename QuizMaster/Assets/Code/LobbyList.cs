@@ -15,19 +15,31 @@ public class LobbyList : MonoBehaviour
     [SerializeField] GameObject RoomType;
     [SerializeField] GameObject isTime;
     [SerializeField] GameObject PuanType;
+    TextMeshProUGUI LobbySearchText;
+    public string LobbySearch;
     GameObject ScRoomName;
     GameObject ScRoomPlayers;
     GameObject ScRoomType;
     GameObject ScPuanType;
     [SerializeField] GameObject Button;
+    [SerializeField] GameObject LobbySearchButton;
     GameObject CopyButton;
     [SerializeField] GameObject Content;
     [SerializeField] List<GameObject> clones;
+
     void Start()
     {
         StartCoroutine(Post("http://localhost:8080/ServiceKelimeOyunu/Service/getOpenRooms", "{}"));
     }
-
+    private void Update()
+    {
+        LobbySearchText = GameObject.Find("LobbySearchText").GetComponent<TextMeshProUGUI>();
+        if (LobbySearchText != null)
+        {
+            LobbySearch = LobbySearchText.text.ToString();
+            Debug.Log(LobbySearch);
+        }
+    }
     public void PostData()
     {
         for(int i = 0; i < clones.Count; i++)
@@ -36,7 +48,14 @@ public class LobbyList : MonoBehaviour
         }
         StartCoroutine(Post("http://localhost:8080/ServiceKelimeOyunu/Service/getOpenRooms", "{}"));
     }
-
+    public void PD()
+    {
+        for (int i = 0; i < clones.Count; i++)
+        {
+            Destroy(clones[i]);
+        }
+        StartCoroutine(Post("http://localhost:8080/ServiceKelimeOyunu/Service/getSearchRooms", processJson(LobbySearch)));
+    }
     IEnumerator Post(string url, string bodyJsonString)
     {
         var request = new UnityWebRequest(url, "POST");
@@ -89,6 +108,17 @@ public class LobbyList : MonoBehaviour
             clones.Add(clone);
         }
 
+    }
+    private string processJson(string LobbySearch)
+    {
+        lobbysearch lbsr= new lobbysearch();
+        LobbySearch = lbsr.ls;
+        string json = JsonUtility.ToJson(lbsr);
+        return json;
+    }
+    public class lobbysearch
+    {
+        public string ls;
     }
     string fixJson(string value)
     {
