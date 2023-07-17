@@ -2409,7 +2409,7 @@ MonoBehaviour:
   audio: {fileID: 1215778375}
   Cevap: {fileID: 822824063}
   "G\xF6nder": {fileID: 1597329833}
-  Puan: {fileID: 1760035954}
+  Puan: {fileID: 1760035956}
   "Uyar\u0131": {fileID: 232478316}
 --- !u!4 &2009083260
 Transform:

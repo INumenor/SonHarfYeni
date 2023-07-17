@@ -77,5 +77,7 @@ public class BotGamePost : MonoBehaviour
         string banner = s;
         send = banner.Trim(charsToTrim);
         send = send.ToLower();
+        Uyarı.text = "";
+        Uyarı.enabled = false;
     }
 }
