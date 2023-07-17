@@ -30,7 +30,6 @@ public class SecondSahneSendWord : MonoBehaviour
     {
         //Debug.Log("InfoRoom");
         Status stat = JsonUtility.FromJson<Status>(_url);
-        Debug.Log("aaaaaaaaaaaaaaaa" + stat.status);
         if(stat.status == "wordWasUsed")
         {
             Uyarı.enabled = true;

@@ -12,7 +12,7 @@ public class BotGameInfo : MonoBehaviour
     [SerializeField] AudioSource audio;
     [SerializeField] GameObject Cevap;
     [SerializeField] GameObject Gönder;
-    [SerializeField] GameObject Puan;
+    [SerializeField] TextMeshProUGUI Puan;
     [SerializeField] TextMeshProUGUI Uyarı;
     TextMeshProUGUI RandomKelime;
     int Flag;
@@ -52,24 +52,26 @@ public class BotGameInfo : MonoBehaviour
     private void processJsonData(string _url)
     {
         InfoBotRoomSec infoRoom = JsonUtility.FromJson<InfoBotRoomSec>(_url);
-        Debug.Log(infoRoom.isPlayer);
-        Debug.Log(infoRoom.Player);
-        Debug.Log(infoRoom.puan);
-        Debug.Log(infoRoom.word);
-        Debug.Log(infoRoom.tour);
         if (infoRoom.isPlayer == "bot")
         {
             RandomKelime.text = infoRoom.word;
+            Flag = 0;
         }
-        //if (Flag == 0)
-        //{
-        //    audio.Play();
-        //    Handheld.Vibrate();
-        //    Flag++;
-        //}
-        Cevap.active = true;
-        Gönder.active = true;
-        Uyarı.enabled = true;
+        if (Flag == 0)
+        {
+            audio.Play();
+            Handheld.Vibrate();
+            Flag++;
+            Puan.text = infoRoom.puan.ToString();
+            Cevap.active = true;
+            Gönder.active = true;
+        }
+        else
+        {
+            Cevap.active = false;
+            Gönder.active = false;
+        }
+        
     }
 
     private string processJson(string _url, string room_key)
