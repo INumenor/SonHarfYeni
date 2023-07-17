@@ -10,6 +10,7 @@ using UnityEngine.SceneManagement;
 public class LoginPlayer : MonoBehaviour
 {
     string Player,Password;
+
     public void PostData() => StartCoroutine(Post("http://localhost:8080/ServiceKelimeOyunu/Service/loginplayer", processJson(Player, Password)));
     IEnumerator Post(string url, string bodyJsonString)
     {

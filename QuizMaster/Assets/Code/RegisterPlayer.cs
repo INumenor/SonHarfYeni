@@ -9,7 +9,12 @@ using TMPro;
 public class RegisterPlayer : MonoBehaviour
 {
     string Player,Email,Password;
-    public void PostData() => StartCoroutine(Post("http://localhost:8080/ServiceKelimeOyunu/Service/registerPlayer", processJson(Player,Email,Password)));
+    string deviceUniqueIdentifier;
+    private void Start()
+    {
+         deviceUniqueIdentifier = SystemInfo.deviceUniqueIdentifier;
+    }
+    public void PostData() => StartCoroutine(Post("http://localhost:8080/ServiceKelimeOyunu/Service/registerPlayer", processJson(Player,Email,Password,deviceUniqueIdentifier)));
     IEnumerator Post(string url, string bodyJsonString)
     {
         var request = new UnityWebRequest(url, "POST");
@@ -27,13 +32,14 @@ public class RegisterPlayer : MonoBehaviour
         Debug.Log(status.status);
     }
 
-    private string processJson(string Player,string Email ,string Password)
+    private string processJson(string Player,string Email ,string Password,string UniqId)
     {
-        Debug.Log(Player);
+        Debug.Log(UniqId);
         Register registerpl = new Register();
         registerpl.playerName = Player;
         registerpl.email = Email;
         registerpl.password = Password;
+        registerpl.uniqId = UniqId;
         string json = JsonUtility.ToJson(registerpl);
         return json;
     }
@@ -56,6 +62,6 @@ public class RegisterPlayer : MonoBehaviour
         public string playerName;
         public string email;
         public string password;
-
+        public string uniqId;
     }
 }

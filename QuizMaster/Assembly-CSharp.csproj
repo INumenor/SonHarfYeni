@@ -86,6 +86,7 @@
     <Compile Include="Assets\Code\PageSwipe.cs" />
     <Compile Include="Assets\Code\PostMetod.cs" />
     <Compile Include="Assets\Code\PostWord.cs" />
+    <Compile Include="Assets\Code\QuickLogin.cs" />
     <Compile Include="Assets\Code\RandomWord.cs" />
     <Compile Include="Assets\Code\RegisterPlayer.cs" />
     <Compile Include="Assets\Code\RoomCreation\GameStart.cs" />
