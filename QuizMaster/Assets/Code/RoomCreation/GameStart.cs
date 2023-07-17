@@ -9,6 +9,7 @@ using System;
 using System.Linq;
 public class GameStart : MonoBehaviour
 {
+    [SerializeField] GameObject LobbyExitButton;
     [SerializeField] GameObject RoomName;
     [SerializeField] GameObject RoomPlayers;
     [SerializeField] GameObject RoomType;
@@ -17,11 +18,16 @@ public class GameStart : MonoBehaviour
     [SerializeField] GameObject RoomKey;
     [SerializeField] GameObject RawImage;
     [SerializeField] GameObject Content;
+    bool exitbutton;
     void Start()
     {
         StartCoroutine(Post("http://localhost:8080/ServiceKelimeOyunu/Service/getRoomsSettingsInfo", processJson(GlobalKullanıcıBilgileri._OyuncuIsim,GlobalKullanıcıBilgileri._Room_key)));
     }
-
+    public void LobbyQuit()
+    {
+        StartCoroutine(Post("http://localhost:8080/ServiceKelimeOyunu/Service/quitGame", processJson(GlobalKullanıcıBilgileri._OyuncuIsim, GlobalKullanıcıBilgileri._Room_key)));
+        exitbutton = true;
+    }
     IEnumerator Post(string url, string bodyJsonString)
     {
         var request = new UnityWebRequest(url, "POST");
@@ -35,6 +41,11 @@ public class GameStart : MonoBehaviour
     }
     private void processJsonData(string req)
     {
+        if (exitbutton == true)
+        {
+            exitbutton = false;
+            processJsonData(req);
+        }
         LobbyInfoSQL lobby = JsonUtility.FromJson<LobbyInfoSQL>(req);
         Debug.Log(lobby.RoomName.ToString());
         RoomName.GetComponent<Text>().text = "Oda İsmi :" + lobby.RoomName.ToString();
