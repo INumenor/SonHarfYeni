@@ -775,6 +775,7 @@ RectTransform:
   - {fileID: 232478315}
   - {fileID: 1760035955}
   - {fileID: 1024518841}
+  - {fileID: 1898333141}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2242,6 +2243,41 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1856425907}
   m_CullTransparentMesh: 0
+--- !u!1 &1898333140
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1898333141}
+  m_Layer: 5
+  m_Name: Kutucuklar
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1898333141
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1898333140}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 10.812617, y: 3.7894688, z: 4.0421}
+  m_Children: []
+  m_Father: {fileID: 803449003}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2008740152
 GameObject:
   m_ObjectHideFlags: 0
@@ -2350,6 +2386,7 @@ GameObject:
   - component: {fileID: 2009083262}
   - component: {fileID: 2009083259}
   - component: {fileID: 2009083261}
+  - component: {fileID: 2009083263}
   m_Layer: 0
   m_Name: Game
   m_TagString: Untagged
@@ -2414,3 +2451,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf19ee61d66f991438138e198ad4b9c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2009083263
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2009083258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c3331681ef2fff40b698f87da6ced7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Kutucuk: {fileID: 7346365338041729857, guid: 744f88ec4c5130445b24703ef58b452c, type: 3}
+  Kutucuklar: []
+  Camera: {fileID: 1790850857}
+  Canvas: {fileID: 1898333140}

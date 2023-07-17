@@ -130,6 +130,7 @@
     <Compile Include="Assets\Code\WebPostExample.cs" />
     <Compile Include="Assets\Code\logintest.cs" />
     <Compile Include="Assets\Code\success.cs" />
+    <Compile Include="Assets\Code\testkutucuk.cs" />
     <Compile Include="Assets\UI\Pagination\Events\DragEventAnalysis.cs" />
     <Compile Include="Assets\UI\Pagination\Events\PassThroughDragEvents.cs" />
     <Compile Include="Assets\UI\Pagination\Examples\NewPaginationExampleController.cs" />
