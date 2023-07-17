@@ -31,21 +31,13 @@ public class LobbyList : MonoBehaviour
     {
         StartCoroutine(Post("http://localhost:8080/ServiceKelimeOyunu/Service/getOpenRooms", "{}"));
     }
-    private void Update()
-    {
-        LobbySearchText = GameObject.Find("LobbySearchText").GetComponent<TextMeshProUGUI>();
-        if (LobbySearchText != null)
-        {
-            LobbySearch = LobbySearchText.text.ToString();
-            Debug.Log(LobbySearch);
-        }
-    }
     public void PostData()
     {
         for(int i = 0; i < clones.Count; i++)
         {
             Destroy(clones[i]);
         }
+        clones.Clear();
         StartCoroutine(Post("http://localhost:8080/ServiceKelimeOyunu/Service/getOpenRooms", "{}"));
     }
     public void PD()
@@ -54,6 +46,7 @@ public class LobbyList : MonoBehaviour
         {
             Destroy(clones[i]);
         }
+        clones.Clear();
         StartCoroutine(Post("http://localhost:8080/ServiceKelimeOyunu/Service/getSearchRooms", processJson(LobbySearch)));
     }
     IEnumerator Post(string url, string bodyJsonString)
@@ -71,6 +64,7 @@ public class LobbyList : MonoBehaviour
     {
         string jsonString = fixJson(req);
         LobbySQL[] lobby = JsonHelper.FromJson<LobbySQL>(jsonString);
+        Debug.Log(lobby.Length);
         RoomName.GetComponent<Text>().text = "Oda İsmi :" + lobby[0].RoomName.ToString();
 
         string[] nokta = { ";;;" };
@@ -111,14 +105,19 @@ public class LobbyList : MonoBehaviour
     }
     private string processJson(string LobbySearch)
     {
-        lobbysearch lbsr= new lobbysearch();
-        LobbySearch = lbsr.ls;
-        string json = JsonUtility.ToJson(lbsr);
+        Search ser = new Search();
+        ser.roomName = LobbySearch;
+        Debug.Log(ser.roomName);
+        string json = JsonUtility.ToJson(ser);
         return json;
     }
-    public class lobbysearch
+    public void ReadInputRoomName(string s)
     {
-        public string ls;
+        LobbySearch = s;
+    }
+    public class Search
+    {
+        public string roomName;
     }
     string fixJson(string value)
     {
