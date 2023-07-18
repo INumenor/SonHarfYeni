@@ -17,16 +17,31 @@ public class GameStart : MonoBehaviour
     [SerializeField] GameObject PuanType;
     [SerializeField] GameObject RoomKey;
     [SerializeField] GameObject RawImage;
+    [SerializeField] GameObject CopyRawImage;
     [SerializeField] GameObject Content;
+    [SerializeField] List<GameObject> clones;
     bool exitbutton;
+    int Flag = 0;
+
+    float timeLeft = 10.0f;
+   
     void Start()
     {
         StartCoroutine(Post("http://localhost:8080/ServiceKelimeOyunu/Service/getRoomsSettingsInfo", processJson(GlobalKullanıcıBilgileri._OyuncuIsim,GlobalKullanıcıBilgileri._Room_key)));
     }
+    void Update()
+    {
+        
+        timeLeft -= Time.deltaTime;
+        if (timeLeft < 0)
+        {
+            StartCoroutine(Post("http://localhost:8080/ServiceKelimeOyunu/Service/getRoomsSettingsInfo", processJson(GlobalKullanıcıBilgileri._OyuncuIsim, GlobalKullanıcıBilgileri._Room_key)));
+            timeLeft = 5.0f;
+        }
+    }
     public void LobbyQuit()
     {
         StartCoroutine(Post("http://localhost:8080/ServiceKelimeOyunu/Service/quitGame", processJson(GlobalKullanıcıBilgileri._OyuncuIsim, GlobalKullanıcıBilgileri._Room_key)));
-        exitbutton = true;
     }
     IEnumerator Post(string url, string bodyJsonString)
     {
@@ -41,34 +56,69 @@ public class GameStart : MonoBehaviour
     }
     private void processJsonData(string req)
     {
-        if (exitbutton == true)
-        {
-            exitbutton = false;
-            processJsonData(req);
-        }
         LobbyInfoSQL lobby = JsonUtility.FromJson<LobbyInfoSQL>(req);
-        Debug.Log(lobby.RoomName.ToString());
-        RoomName.GetComponent<Text>().text = "Oda İsmi :" + lobby.RoomName.ToString();
-        RoomKey.GetComponent<Text>().text = lobby.RoomKey.ToString();
-        string[] nokta = { ";;;" };
-        string[] players = lobby.Players.Split(nokta, System.StringSplitOptions.RemoveEmptyEntries);
-
-        RoomPlayers.GetComponent<Text>().text = "Oyuncu Sayısı/Oda Limiti :" + players.Length + "/" + lobby.NumberOfPeople;
-        RoomType.GetComponent<Text>().text = lobby.isPrivate.ToString();
-        isTime.GetComponent<Text>().text = lobby.Time.ToString();
-        PuanType.GetComponent<Text>().text = lobby.PointType.ToString();
-        RawImage.GetComponentInChildren<Text>().text = players[0];
-        Debug.Log(players.Length);
-        for (int i = 1; i < players.Length; i++)
+        if (Flag == 0)
         {
-            GameObject clone = Instantiate(RawImage, new Vector3(RawImage.transform.position.x, RawImage.transform.position.y - 1.4f, RawImage.transform.position.z), RawImage.transform.rotation);
-            Transform parentTransform = clone.transform;
-            string[] cloneplayers = lobby.Players.Split(nokta, System.StringSplitOptions.RemoveEmptyEntries);
-            clone.GetComponentInChildren<Text>().text = players[i];
-            clone.transform.parent = Content.transform;
-            clone.transform.localScale = new Vector3(1, 0.5f, 1);
-            RawImage = clone;
+            RoomName.GetComponent<Text>().text = "Oda İsmi :" + lobby.RoomName.ToString();
+            RoomKey.GetComponent<Text>().text = lobby.RoomKey.ToString();
+
+            string[] nokta = { ";;;" };
+            string[] players = lobby.Players.Split(nokta, System.StringSplitOptions.RemoveEmptyEntries);
+
+            RoomPlayers.GetComponent<Text>().text = "Oyuncu Sayısı/Oda Limiti :" + players.Length + "/" + lobby.NumberOfPeople;
+            RoomType.GetComponent<Text>().text = lobby.isPrivate.ToString();
+            isTime.GetComponent<Text>().text = lobby.Time.ToString();
+            PuanType.GetComponent<Text>().text = lobby.PointType.ToString();
+            RawImage.GetComponentInChildren<Text>().text = players[0];
+            RawImage.name = players[0];
+            CopyRawImage = RawImage;
+            clones.Add(CopyRawImage);
+            for (int i = 1; i < players.Length; i++)
+            {
+                GameObject clone = Instantiate(CopyRawImage, new Vector3(CopyRawImage.transform.position.x, CopyRawImage.transform.position.y - 1.4f, CopyRawImage.transform.position.z), CopyRawImage.transform.rotation);
+                Transform parentTransform = clone.transform;
+                string[] cloneplayers = lobby.Players.Split(nokta, System.StringSplitOptions.RemoveEmptyEntries);
+                clone.GetComponentInChildren<Text>().text = players[i];
+                clone.name = players[i];
+                clone.transform.parent = Content.transform;
+                clone.transform.localScale = new Vector3(1, 0.5f, 1);
+                CopyRawImage = clone;
+                clones.Add(clone);
+            }
         }
+        else
+        {
+            string[] nokta = { ";;;" };
+            string[] players = lobby.Players.Split(nokta, System.StringSplitOptions.RemoveEmptyEntries);
+            int iBrake = 0;
+            Debug.Log(players.Length+"a"+clones.Count);
+            if (players.Length != clones.Count)
+            {
+                iBrake = 1;
+            }
+            if(iBrake == 1) 
+            {
+                for (int i = 1; i < clones.Count; i++)
+                {
+                    DestroyImmediate(clones[i]);
+                    clones.Remove(clones[i]);
+                }
+                CopyRawImage = RawImage;
+                for (int i = 1; i < players.Length; i++)
+                {
+                    GameObject clone = Instantiate(CopyRawImage, new Vector3(CopyRawImage.transform.position.x, CopyRawImage.transform.position.y - 1.4f, CopyRawImage.transform.position.z), CopyRawImage.transform.rotation);
+                    Transform parentTransform = clone.transform;
+                    string[] cloneplayers = lobby.Players.Split(nokta, System.StringSplitOptions.RemoveEmptyEntries);
+                    clone.GetComponentInChildren<Text>().text = players[i];
+                    clone.name = players[i];
+                    clone.transform.parent = Content.transform;
+                    clone.transform.localScale = new Vector3(1, 0.5f, 1);
+                    CopyRawImage = clone;
+                    clones.Add(clone);
+                }
+            }
+        }
+        Flag = 1;
     }
 
     private string processJson(string _url, string room_key)

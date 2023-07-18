@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.Networking;
 using System.Text;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class Settings : MonoBehaviour
 {
@@ -113,9 +114,11 @@ public class Settings : MonoBehaviour
     private void processJsonData(string _url)
     { 
         Key key = JsonUtility.FromJson<Key>(_url);
-        //GlobalKullanıcıBilgileri._Room_key = key.room_key;
-        Debug.Log(key.status);
-        Debug.Log(key.room_key);
+        GlobalKullanıcıBilgileri._Room_key = key.room_key;
+        if(key.status == "success")
+        {
+            SceneManager.LoadScene(3);
+        }
     }
 
     private string processJson(string RoomNameText, string PlayerName,bool PrivatePublicButton, bool TimeButton,  int NumberOfPeople, bool PointType,int TimeBreak)
