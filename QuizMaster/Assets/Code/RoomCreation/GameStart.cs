@@ -17,6 +17,7 @@ public class GameStart : MonoBehaviour
     [SerializeField] GameObject RawImage;
     [SerializeField] GameObject CopyRawImage;
     [SerializeField] GameObject Content;
+    [SerializeField] GameObject StartButton;
     [SerializeField] List<GameObject> clones;
     bool exitbutton;
     int Flag = 0;
@@ -59,6 +60,10 @@ public class GameStart : MonoBehaviour
         LobbyInfoSQL lobby = JsonUtility.FromJson<LobbyInfoSQL>(req);
         string[] nokta = { ";;;" };
         string[] players = lobby.Players.Split(nokta, System.StringSplitOptions.RemoveEmptyEntries);
+        if(players[0] == GlobalKullanıcıBilgileri._OyuncuIsim)
+        {
+            StartButton.active = true;
+        }
         if (players.Length != clones.Count)
         {
             RoomName.GetComponent<Text>().text = "Oda İsmi :" + lobby.RoomName.ToString();
@@ -67,10 +72,7 @@ public class GameStart : MonoBehaviour
             RoomType.GetComponent<Text>().text = lobby.isPrivate.ToString();
             isTime.GetComponent<Text>().text = lobby.Time.ToString();
             PuanType.GetComponent<Text>().text = lobby.PointType.ToString();
-            //RawImage.GetComponentInChildren<Text>().text = players[0];
-            //RawImage.name = players[0];
             CopyRawImage = RawImage;
-            //clones.Add(CopyRawImage);
             for (int i = 0; i < clones.Count; i++)
             {
                 Destroy(clones[i]);
@@ -88,6 +90,10 @@ public class GameStart : MonoBehaviour
                     CopyRawImage = clone;
                     clones.Add(clone);
                 }
+        }
+        if(lobby.isGameStarted == true)
+        {
+            SceneManager.LoadScene(6);
         }
     }
 

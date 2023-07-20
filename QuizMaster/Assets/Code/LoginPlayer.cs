@@ -10,8 +10,12 @@ using UnityEngine.SceneManagement;
 public class LoginPlayer : MonoBehaviour
 {
     string Player,Password;
-
-    public void PostData() => StartCoroutine(Post("http://localhost:8080/ServiceKelimeOyunu/Service/loginplayer", processJson(Player, Password)));
+    string deviceUniqueIdentifier;
+    private void Start()
+    {
+        deviceUniqueIdentifier = SystemInfo.deviceUniqueIdentifier;
+    }
+    public void PostData() => StartCoroutine(Post("http://localhost:8080/ServiceKelimeOyunu/Service/loginplayer", processJson(Player, Password, deviceUniqueIdentifier)));
     IEnumerator Post(string url, string bodyJsonString)
     {
         var request = new UnityWebRequest(url, "POST");
@@ -33,12 +37,13 @@ public class LoginPlayer : MonoBehaviour
         }
     }
 
-    private string processJson(string Player, string Password)
+    private string processJson(string Player, string Password,string UniqId)
     {
         Debug.Log(Player);
         Login loginpl = new Login();
         loginpl.playerName = Player;
         loginpl.password = Password;
+        loginpl.uniqId = UniqId;
         string json = JsonUtility.ToJson(loginpl);
         return json;
     }
@@ -56,6 +61,7 @@ public class LoginPlayer : MonoBehaviour
     {
         public string playerName;
         public string password;
+        public string uniqId;
 
     }
 }

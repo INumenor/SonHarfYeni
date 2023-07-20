@@ -45,13 +45,14 @@ public class BotGamePost : MonoBehaviour
             Uyarı.enabled = true;
             Uyarı.text = "Sözlükte böyle bir kelime bulunmamaktadır.";
         }
-        else
+        else if(stat.status == "success")
         {
+            Debug.Log("Geldim");
             Uyarı.text = "Gönderildi";
             Uyarı.enabled = true;
             Gönder.active = false;
         }
-        OyunSahnesiInfoRoom InfoAl = new OyunSahnesiInfoRoom();
+        //OyunSahnesiInfoRoom InfoAl = new OyunSahnesiInfoRoom();
         //InfoAl.InfoAl();
     }
 

@@ -11,7 +11,7 @@ public class SecondSahneSendWord : MonoBehaviour
     [SerializeField] TextMeshProUGUI Uyarı;
     [SerializeField] GameObject Gönder;
 
-    public void PostData() => StartCoroutine(Post("http://appjam.inseres.com/servicekelimeoyunu/Service/SendWord", processJson(GlobalKullanıcıBilgileri._OyuncuIsim, GlobalKullanıcıBilgileri._Room_key, send)));
+    public void PostData() => StartCoroutine(Post("http://localhost:8080/ServiceKelimeOyunu/Service/OnlineSendWord", processJson(GlobalKullanıcıBilgileri._OyuncuIsim, GlobalKullanıcıBilgileri._Room_key, send)));
 
     IEnumerator Post(string url, string bodyJsonString)
     {

@@ -30,8 +30,12 @@ public class QuickLogin : MonoBehaviour
     private void processJsonData(string _url)
     {
         Status status = JsonUtility.FromJson<Status>(_url);
-        GlobalKullanıcıBilgileri._OyuncuIsim = status.status;
-        SceneManager.LoadScene(1);
+        Debug.Log(status.status);
+        if(status.status != "fail")
+        {
+            GlobalKullanıcıBilgileri._OyuncuIsim = status.status;
+            SceneManager.LoadScene(1);
+        }
     }
 
     private string processJson(string UniqId)

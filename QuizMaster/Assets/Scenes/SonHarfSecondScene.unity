@@ -2708,7 +2708,6 @@ GameObject:
   - component: {fileID: 2009083259}
   - component: {fileID: 2009083262}
   - component: {fileID: 2009083263}
-  - component: {fileID: 2009083264}
   - component: {fileID: 2009083265}
   m_Layer: 0
   m_Name: Game
@@ -2770,34 +2769,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sound: {fileID: 0}
   mute: {fileID: 0}
---- !u!114 &2009083264
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2009083258}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 702ace0fddf6fea45ba0d409a4f4387e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  OyunKodu: {fileID: 0}
-  "Y\u0131ld\u0131z": {fileID: 0}
-  "Y\u0131ld\u0131z1": {fileID: 0}
-  "Y\u0131ld\u0131z2": {fileID: 0}
-  "Y\u0131ld\u0131z3": {fileID: 0}
-  "Y\u0131ld\u0131z4": {fileID: 0}
-  "Y\u0131ld\u0131z5": {fileID: 0}
-  "Y\u0131ld\u0131z6": {fileID: 0}
-  "Y\u0131ld\u0131z7": {fileID: 0}
-  Bulut: {fileID: 0}
-  Bulut1: {fileID: 0}
-  Bulut2: {fileID: 0}
-  gunes: {fileID: 0}
-  ArkaPlan: {fileID: 1187306702}
-  Gece: {fileID: 21300000, guid: d197993d33983244fb44c452f229ff15, type: 3}
-  "G\xFCnd\xFCz": {fileID: 21300000, guid: 7f6cb190fea14bf48be5e6183d4fec4a, type: 3}
 --- !u!114 &2009083265
 MonoBehaviour:
   m_ObjectHideFlags: 0

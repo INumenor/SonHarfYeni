@@ -8,10 +8,11 @@ using TMPro;
 using UnityEngine.SceneManagement;
 public class BotGameStart : MonoBehaviour
 {
+    public Animator Anim;
+    [SerializeField] AudioSource Audio;
     public void PostData() => StartCoroutine(Post("http://localhost:8080/ServiceKelimeOyunu/Service/SingelStartGame", processJson(GlobalKullanıcıBilgileri._OyuncuIsim)));
     IEnumerator Post(string url, string bodyJsonString)
     {
-        //yield return new WaitForSeconds(5);
         var request = new UnityWebRequest(url, "POST");
         byte[] bodyRaw = Encoding.UTF8.GetBytes(bodyJsonString);
         request.uploadHandler = (UploadHandler)new UploadHandlerRaw(bodyRaw);
@@ -29,8 +30,15 @@ public class BotGameStart : MonoBehaviour
         if (stat.status == "success")
         {
             GlobalKullanıcıBilgileri.Room_key = stat.roomkey;
-            SceneManager.LoadScene(2);
+            Anim.SetBool("Destroy", true);
+            Audio.Play();
+            StartCoroutine(Delay(0.30f));
         }
+    }
+    IEnumerator Delay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        SceneManager.LoadScene(2);
     }
 
     private string processJson(string _url)
