@@ -7,15 +7,18 @@ using UnityEngine.SceneManagement;
 using System.Text;
 using TMPro;
 using DG.Tweening;
+using System;
 
 public class BotGameInfo : MonoBehaviour
 {
     [SerializeField] AudioSource audio;
     [SerializeField] GameObject Cevap;
     [SerializeField] GameObject Gönder;
+    [SerializeField] Text GameTime;
     [SerializeField] TextMeshProUGUI Puan;
     [SerializeField] TextMeshProUGUI Uyarı;
-    TextMeshProUGUI RandomKelime;
+    [SerializeField] GameObject PopUp;
+    float iTime = 100f;
 
     [SerializeField] GameObject Kutucuk;
     [SerializeField] List<GameObject> Kutucuklar;
@@ -36,20 +39,29 @@ public class BotGameInfo : MonoBehaviour
     float timeLeft = 5.0f;
     void Update()
     {
-        timeLeft -= Time.deltaTime;
-        if (timeLeft < 0)
+        if (PopUp.active != true)
         {
-            StartCoroutine(Post("http://localhost:8080/ServiceKelimeOyunu/Service/InfoBotRoom", processJson(GlobalKullanıcıBilgileri._OyuncuIsim, GlobalKullanıcıBilgileri._Room_key)));
-            timeLeft = 3.0f;
+            timeLeft -= Time.deltaTime;
+            iTime -= Time.deltaTime;
+            if (timeLeft < 0)
+            {
+                StartCoroutine(Post("http://localhost:8080/ServiceKelimeOyunu/Service/InfoBotRoom", processJson(GlobalKullanıcıBilgileri._OyuncuIsim, GlobalKullanıcıBilgileri._Room_key)));
+                timeLeft = 1.5f;
+            }
+            GameTime.text = (Convert.ToInt32(iTime)).ToString();
+        }
+        if(iTime < 0)
+        {
+            PopUp.active = true;
+            GlobalKullanıcıBilgileri._Room_key = null;
+            audio.enabled = false;
+            Cevap.active = false;
+            Gönder.active = false;
+            Uyarı.enabled = false;
         }
     }
-    //public void InfoAl()
-    //{
-    //    StartCoroutine(Post("http://localhost:8080/ServiceKelimeOyunu/Service/InfoBotRoom", processJson(GlobalKullanıcıBilgileri._OyuncuIsim, GlobalKullanıcıBilgileri._Room_key)));
-    //}
     IEnumerator Post(string url, string bodyJsonString)
     {
-        //yield return new WaitForSeconds(30);
         var request = new UnityWebRequest(url, "POST");
         byte[] bodyRaw = Encoding.UTF8.GetBytes(bodyJsonString);
         request.uploadHandler = (UploadHandler)new UploadHandlerRaw(bodyRaw);
@@ -63,11 +75,22 @@ public class BotGameInfo : MonoBehaviour
     private void processJsonData(string _url)
     {
         InfoBotRoomSec infoRoom = JsonUtility.FromJson<InfoBotRoomSec>(_url);
+        if (BotGamePost._Stats == "success")
+        {
+            for (int i = 0; i < Ballons.Count; i++)
+            {
+                Destroy(Ballons[i]);
+            }
+            Ballons.Clear();
+            BotGamePost._Stats = null;
+            iTime = 100f;
+        }
         if (infoRoom.isPlayer == "bot" && Ballons.Count == 0)
         {
             BallonsCreate(infoRoom.word);
             Flag = 0;
         }
+        Debug.Log("Kullanıcı:"+ infoRoom.isPlayer + " Flag : "+ Flag);
         if (Flag == 0)
         {
             audio.Play();
@@ -79,11 +102,9 @@ public class BotGameInfo : MonoBehaviour
         }
         else if(infoRoom.isPlayer != "bot" && Flag == 1)
         {
-            Debug.Log("Geldim");
             Cevap.active = false;
             Gönder.active = false;
         }
-        
     }
 
     private string processJson(string _url, string room_key)

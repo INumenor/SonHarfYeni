@@ -93,6 +93,8 @@ public class GameStart : MonoBehaviour
         }
         if(lobby.isGameStarted == true)
         {
+            Debug.Log("lobby.Time:" + lobby.Time);
+            GlobalKullanıcıBilgileri._iRoomGameTime = lobby.Time;
             SceneManager.LoadScene(6);
         }
     }

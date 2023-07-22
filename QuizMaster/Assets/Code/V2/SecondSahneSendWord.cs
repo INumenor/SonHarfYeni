@@ -10,7 +10,7 @@ public class SecondSahneSendWord : MonoBehaviour
     string send;
     [SerializeField] TextMeshProUGUI Uyarı;
     [SerializeField] GameObject Gönder;
-
+    static string Stats;
     public void PostData() => StartCoroutine(Post("http://localhost:8080/ServiceKelimeOyunu/Service/OnlineSendWord", processJson(GlobalKullanıcıBilgileri._OyuncuIsim, GlobalKullanıcıBilgileri._Room_key, send)));
 
     IEnumerator Post(string url, string bodyJsonString)
@@ -23,12 +23,10 @@ public class SecondSahneSendWord : MonoBehaviour
         request.SetRequestHeader("Content-Type", "application/json");
         yield return request.SendWebRequest();
         Debug.Log("Status Code: " + request.responseCode);
-        //Debug.Log(request.downloadHandler.text);
         processJsonData(request.downloadHandler.text);
     }
     private void processJsonData(string _url)
     {
-        //Debug.Log("InfoRoom");
         Status stat = JsonUtility.FromJson<Status>(_url);
         if(stat.status == "wordWasUsed")
         {
@@ -51,8 +49,8 @@ public class SecondSahneSendWord : MonoBehaviour
             Uyarı.enabled = true;
             Gönder.active = false;
         }
-        OyunSahnesiInfoRoom InfoAl = new OyunSahnesiInfoRoom();
-        InfoAl.InfoAl();
+        //OyunSahnesiInfoRoom InfoAl = new OyunSahnesiInfoRoom();
+        //InfoAl.InfoAl();
     }
 
     private string processJson(string _url, string room_key,string word)
@@ -80,5 +78,16 @@ public class SecondSahneSendWord : MonoBehaviour
         send = banner.Trim(charsToTrim);
         send = send.ToLower();
         //Debug.Log(send);
+    }
+    public static string _Stats
+    {
+        get
+        {
+            return Stats;
+        }
+        set
+        {
+            Stats = value;
+        }
     }
 }

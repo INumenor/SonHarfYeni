@@ -9,6 +9,7 @@ public class GlobalKullanıcıBilgileri : MonoBehaviour
     public static string LoginRoom_key;
     public static string Day;
     public static string playerTurn;
+    public static int iRoomGameTime;
     public static bool Music;
 
     private void Start()
@@ -70,6 +71,17 @@ public class GlobalKullanıcıBilgileri : MonoBehaviour
         set
         {
             Music = value;
+        }
+    }
+    public static int _iRoomGameTime
+    {
+        get
+        {
+            return iRoomGameTime;
+        }
+        set
+        {
+            iRoomGameTime = value;
         }
     }
 

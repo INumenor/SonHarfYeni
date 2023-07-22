@@ -55,6 +55,7 @@ public class Settings : MonoBehaviour
             Time.active = true;
             SureSlider.interactable = true;
             TimeButton = true;
+            TimeBreak = 15;
         }
         else
         {
@@ -117,6 +118,7 @@ public class Settings : MonoBehaviour
         GlobalKullanıcıBilgileri._Room_key = key.room_key;
         if(key.status == "success")
         {
+            GlobalKullanıcıBilgileri._iRoomGameTime = TimeBreak;
             SceneManager.LoadScene(3);
         }
     }
