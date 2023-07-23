@@ -95,7 +95,7 @@ public class OyunSahnesiInfoRoom : MonoBehaviour
         {
             GameObject.Find("Game").GetComponent<PlayerQuit>().PostData();
             GlobalKullanıcıBilgileri._Room_key =null;
-            SceneManager.LoadScene(0);
+            SceneManager.LoadScene(1);
         }
         if (GlobalKullanıcıBilgileri._OyuncuIsim == infoRoom.playersTurn)
         {

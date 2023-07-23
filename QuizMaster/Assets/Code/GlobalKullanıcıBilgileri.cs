@@ -7,7 +7,6 @@ public class GlobalKullanıcıBilgileri : MonoBehaviour
     private static string OyuncuIsim;
     public static string Room_key;
     public static string LoginRoom_key;
-    public static string Day;
     public static string playerTurn;
     public static int iRoomGameTime;
     public static bool Music;
@@ -38,17 +37,6 @@ public class GlobalKullanıcıBilgileri : MonoBehaviour
         set
         {
             Room_key = value;
-        }
-    }
-    public static string _Day
-    {
-        get
-        {
-            return Day;
-        }
-        set
-        {
-            Day = value;
         }
     }
     public static string _playerTurn

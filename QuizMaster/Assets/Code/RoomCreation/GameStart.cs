@@ -95,7 +95,7 @@ public class GameStart : MonoBehaviour
         {
             Debug.Log("lobby.Time:" + lobby.Time);
             GlobalKullanıcıBilgileri._iRoomGameTime = lobby.Time;
-            SceneManager.LoadScene(6);
+            SceneManager.LoadScene(5);
         }
     }
 

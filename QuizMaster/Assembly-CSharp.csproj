@@ -88,6 +88,7 @@
     <Compile Include="Assets\Code\PostMetod.cs" />
     <Compile Include="Assets\Code\PostWord.cs" />
     <Compile Include="Assets\Code\QuickLogin.cs" />
+    <Compile Include="Assets\Code\QuitUser.cs" />
     <Compile Include="Assets\Code\RandomWord.cs" />
     <Compile Include="Assets\Code\RegisterPlayer.cs" />
     <Compile Include="Assets\Code\RoomCreation\GameStart.cs" />
@@ -99,7 +100,6 @@
     <Compile Include="Assets\Code\SendWord.cs" />
     <Compile Include="Assets\Code\TestWord.cs" />
     <Compile Include="Assets\Code\Turn.cs" />
-    <Compile Include="Assets\Code\V2\BackgroundControl.cs" />
     <Compile Include="Assets\Code\V2\BotGameStatus.cs" />
     <Compile Include="Assets\Code\V2\BİlgiButonuAktifleştirme.cs" />
     <Compile Include="Assets\Code\V2\GirişEkranıButonAktifleştirme.cs" />
@@ -124,8 +124,6 @@
     <Compile Include="Assets\Code\V2\StartGameStatus.cs" />
     <Compile Include="Assets\Code\V3\AnchorGameObject.cs" />
     <Compile Include="Assets\Code\V3\CameraViewportHandler.cs" />
-    <Compile Include="Assets\Code\V3\DayNight.cs" />
-    <Compile Include="Assets\Code\V3\EkipGöster.cs" />
     <Compile Include="Assets\Code\V4\BildirimServisi.cs" />
     <Compile Include="Assets\Code\V4\Puan.cs" />
     <Compile Include="Assets\Code\ViewportHandler.cs" />

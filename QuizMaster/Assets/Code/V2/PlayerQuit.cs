@@ -9,7 +9,8 @@ using TMPro;
 
 public class PlayerQuit : MonoBehaviour
 {
-    public void PostData() => StartCoroutine(Post("http://appjam.inseres.com/servicekelimeoyunu/Service/quitGame", processJson(GlobalKullanıcıBilgileri._OyuncuIsim, GlobalKullanıcıBilgileri._Room_key)));
+    [SerializeField] SahneGecis gec;
+    public void PostData() => StartCoroutine(Post("http://localhost:8080/ServiceKelimeOyunu/Service/quitGame", processJson(GlobalKullanıcıBilgileri._OyuncuIsim, GlobalKullanıcıBilgileri._Room_key)));
     IEnumerator Post(string url, string bodyJsonString)
     {
         //yield return new WaitForSeconds(5);
@@ -31,7 +32,8 @@ public class PlayerQuit : MonoBehaviour
         Debug.Log(stat.status);
         if (stat.status == "success")
         {
-            Debug.Log("Geldik");
+            GlobalKullanıcıBilgileri._Room_key = null;
+            gec.QuitSahne(1);
         }
     }
 

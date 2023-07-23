@@ -18,15 +18,9 @@ EditorBuildSettings:
     path: Assets/Scenes/GameLobby.unity
     guid: 311ef00f665726d4481a423afa3856e9
   - enabled: 1
-    path: Assets/Scenes/OyunYaratAraEkran.unity
-    guid: 551cd2f7aa62c7741997d7b398fbc377
-  - enabled: 1
     path: Assets/Scenes/RoomCreation.unity
     guid: 7ff23ba452468cb42bc4d4661b0778e5
   - enabled: 1
     path: Assets/Scenes/SonHarfSecondScene.unity
     guid: 782edf4507057ff479781825ce30817f
-  - enabled: 1
-    path: Assets/Scenes/EkipSahnesi.unity
-    guid: 71e2aa6db5338a64aa63598ef3183062
   m_configObjects: {}
