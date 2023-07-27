@@ -76,6 +76,7 @@
     <Compile Include="Assets\Code\LobbyLogin.cs" />
     <Compile Include="Assets\Code\LobbySQL.cs" />
     <Compile Include="Assets\Code\LoginPlayer.cs" />
+    <Compile Include="Assets\Code\MyRoomsList.cs" />
     <Compile Include="Assets\Code\NameAndCodeSend.cs" />
     <Compile Include="Assets\Code\OyunGirişİnfoRoom.cs" />
     <Compile Include="Assets\Code\OyunYaratButonAktifleşme.cs" />
@@ -118,10 +119,12 @@
     <Compile Include="Assets\Code\V2\OyunYaratInfoRoom.cs" />
     <Compile Include="Assets\Code\V2\OyunYaratOyuncuListesi.cs" />
     <Compile Include="Assets\Code\V2\PaylaşButton.cs" />
+    <Compile Include="Assets\Code\V2\PlaySoundOnStart.cs" />
     <Compile Include="Assets\Code\V2\PlayerQuit.cs" />
     <Compile Include="Assets\Code\V2\SecondSahneSendWord.cs" />
     <Compile Include="Assets\Code\V2\StartGame.cs" />
     <Compile Include="Assets\Code\V2\StartGameStatus.cs" />
+    <Compile Include="Assets\Code\V2\VolumeSlider.cs" />
     <Compile Include="Assets\Code\V3\AnchorGameObject.cs" />
     <Compile Include="Assets\Code\V3\CameraViewportHandler.cs" />
     <Compile Include="Assets\Code\V4\BildirimServisi.cs" />

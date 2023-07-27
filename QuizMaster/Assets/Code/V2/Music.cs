@@ -4,35 +4,49 @@ using UnityEngine;
 
 public class Music : MonoBehaviour
 {
-    [SerializeField] AudioSource audio;
-    [SerializeField] GameObject sound;
-    [SerializeField] GameObject mute;
-    private void Start()
+    [SerializeField] private AudioSource _musicSource;
+    [SerializeField] public Animator FlamentSettings;
+    [SerializeField] public GameObject FlamentSettingsMusic;
+
+    public static Music Instance;
+
+    void Awake()
     {
-        if(GlobalKullanıcıBilgileri._Music == true)
+        if(Instance == null)
         {
-            Destroy(audio);
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
-            GlobalKullanıcıBilgileri._Music = true;
-            DontDestroyOnLoad(audio);
+            Destroy(gameObject);
         }
+    }
+    public void MusicStart(AudioClip clip)
+    {
         
     }
-    public void MusicStart()
+    public void ChangeMasterVolume(float value)
     {
-        audio = GameObject.Find("Music").GetComponent<AudioSource>();
-        mute.active = false;
-        sound.active = true;
-        audio.Play();
+        AudioListener.volume = value;
     }
-
-    public void MusicStop()
+    public void FlamentOpenSettings()
     {
-        audio = GameObject.Find("Music").GetComponent<AudioSource>();
-        sound.active = false;
-        mute.active = true;
-        audio.Stop();
+        if(FlamentSettings.GetInteger("Open/Close") == 0)
+        {
+            FlamentSettings.SetInteger("Open/Close", 1);
+            FlamentSettingsMusic.active = true;
+        }
+        else if(FlamentSettings.GetInteger("Open/Close") == 1)
+        {
+            FlamentSettings.SetInteger("Open/Close", 2);
+            FlamentSettingsMusic.active = false;
+        }
+        else
+        {
+            FlamentSettings.SetInteger("Open/Close", 1);
+            FlamentSettingsMusic.active = true;
+        }
+        
     }
 }
