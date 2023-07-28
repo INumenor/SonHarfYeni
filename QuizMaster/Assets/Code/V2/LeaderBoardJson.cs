@@ -1,6 +1,5 @@
 ﻿[System.Serializable]
-public class Player
+public class LeaderPlayer
 {
-    public string puan;
     public string player;
 }

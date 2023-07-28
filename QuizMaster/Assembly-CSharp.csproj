@@ -76,6 +76,7 @@
     <Compile Include="Assets\Code\LobbyLogin.cs" />
     <Compile Include="Assets\Code\LobbySQL.cs" />
     <Compile Include="Assets\Code\LoginPlayer.cs" />
+    <Compile Include="Assets\Code\MyGameSahneGec.cs" />
     <Compile Include="Assets\Code\MyRoomsList.cs" />
     <Compile Include="Assets\Code\NameAndCodeSend.cs" />
     <Compile Include="Assets\Code\OyunGirişİnfoRoom.cs" />
@@ -99,6 +100,7 @@
     <Compile Include="Assets\Code\RoomKeyControl.cs" />
     <Compile Include="Assets\Code\SahneGecis.cs" />
     <Compile Include="Assets\Code\SendWord.cs" />
+    <Compile Include="Assets\Code\SingleGameLeaderBoard.cs" />
     <Compile Include="Assets\Code\TestWord.cs" />
     <Compile Include="Assets\Code\Turn.cs" />
     <Compile Include="Assets\Code\V2\BotGameStatus.cs" />
@@ -131,6 +133,8 @@
     <Compile Include="Assets\Code\V4\Puan.cs" />
     <Compile Include="Assets\Code\ViewportHandler.cs" />
     <Compile Include="Assets\Code\WebPostExample.cs" />
+    <Compile Include="Assets\Code\WordHardestLeaderBoard.cs" />
+    <Compile Include="Assets\Code\WordLenghtLeaderBoard.cs" />
     <Compile Include="Assets\Code\logintest.cs" />
     <Compile Include="Assets\Code\success.cs" />
     <Compile Include="Assets\Code\testkutucuk.cs" />

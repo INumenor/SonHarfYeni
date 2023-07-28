@@ -40,7 +40,6 @@ public class LobbyLogin : MonoBehaviour
     }
     IEnumerator Post(string url, string bodyJsonString)
     {
-        //yield return new WaitForSeconds(30);
         var request = new UnityWebRequest(url, "POST");
         byte[] bodyRaw = Encoding.UTF8.GetBytes(bodyJsonString);
         request.uploadHandler = (UploadHandler)new UploadHandlerRaw(bodyRaw);
