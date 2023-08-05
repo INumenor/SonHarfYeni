@@ -13,6 +13,7 @@ public class Settings : MonoBehaviour
     [SerializeField] GameObject Private;
     [SerializeField] GameObject Time;
     [SerializeField] GameObject Point;
+    [SerializeField] GameObject SendButton;
     [SerializeField] Slider SureSlider;
     [SerializeField] Slider KisiSayisiSlider;
     public string RoomNameText;
@@ -21,16 +22,16 @@ public class Settings : MonoBehaviour
     public int TimeBreak;
     public int NumberOfPeople=2;
     public bool PointType=false;
-
     private void Update()
     {
-        RoomName = GameObject.Find("RoomNameText").GetComponent<TextMeshProUGUI>();
-        if (RoomName != null)
+        if (RoomNameText.Equals(""))
         {
-            RoomNameText = RoomName.text.ToString();
-            Debug.Log(RoomNameText);
+            SendButton.active = false;
         }
-      
+        else
+        {
+            SendButton.active = true;
+        }
     }
     public void IsPrivate()
     {
@@ -130,7 +131,7 @@ public class Settings : MonoBehaviour
         sr.roomName = RoomNameText;
         sr.isPrivate = PrivatePublicButton;
         sr.isTimeOpen = TimeButton;
-        sr.numberOfPeople = NumberOfPeople;
+        sr.numberOfPeople = Number(NumberOfPeople);
         sr.pointType = PointType;
         sr.time = TimeBreak;
         string json = JsonUtility.ToJson(sr);
@@ -145,6 +146,22 @@ public class Settings : MonoBehaviour
         public int numberOfPeople;
         public bool pointType;
         public int time;
+
+    }
+    public void ReadInputRoomName(string s)
+    {
+        RoomNameText = s;
+    }
+    public int Number(int number)
+    {
+        if(number == 0)
+        {
+            return 2;
+        }
+        else
+        {
+            return number;
+        }
 
     }
 }

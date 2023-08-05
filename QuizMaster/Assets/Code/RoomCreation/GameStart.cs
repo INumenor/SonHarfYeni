@@ -86,7 +86,7 @@ public class GameStart : MonoBehaviour
                     clone.GetComponentInChildren<Text>().text = players[i];
                     clone.name = players[i];
                     clone.transform.parent = Content.transform;
-                    clone.transform.localScale = new Vector3(1, 0.5f, 1);
+                    clone.transform.localScale = new Vector3(1.5f, 0.75f, 1);
                     CopyRawImage = clone;
                     clones.Add(clone);
                 }

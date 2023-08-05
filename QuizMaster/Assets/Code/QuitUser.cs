@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using UnityEngine.Networking;
 using System.Text;
 using TMPro;
 
 public class QuitUser : MonoBehaviour
 {
-    [SerializeField] SahneGecis gec;
+    public Animator Anim;
     string deviceUniqueIdentifier;
     private void Start()
     {
@@ -39,8 +40,15 @@ public class QuitUser : MonoBehaviour
             GlobalKullanıcıBilgileri._OyuncuIsim = null;
             GlobalKullanıcıBilgileri._playerTurn = null;
             GlobalKullanıcıBilgileri._iRoomGameTime = 0;
-            gec.QuitSahne(0);
+            Anim.SetBool("Destroy", true);
+            StartCoroutine(Delay(0.30f));
         }
+    }
+
+    IEnumerator Delay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        SceneManager.LoadScene(0);
     }
 
     private string processJson(string _url)
@@ -56,3 +64,4 @@ public class QuitUser : MonoBehaviour
         public string uniqId;
     }
 }
+

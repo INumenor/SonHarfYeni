@@ -1,25 +1,50 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Music : MonoBehaviour
 {
     [SerializeField] private AudioSource _musicSource;
+    [SerializeField] private GameObject Top;
+    [SerializeField] private GameObject EkipCan;
     [SerializeField] public Animator FlamentSettings;
     [SerializeField] public Animator EkipAnim;
     [SerializeField] public GameObject FlamentSettingsMusic;
     [SerializeField] public GameObject FlamentLeader;
     [SerializeField] public Text PlayerName;
-
     public static Music Instance;
 
     void Awake()
     {
-        if(Instance == null)
+        if (SceneManager.GetActiveScene().name == "LoginAndRegisterScene" || SceneManager.GetActiveScene().name == "GameLobby" || SceneManager.GetActiveScene().name == "RoomCreation")
         {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
+            this.gameObject.active = false;
+            Top.active = false;
+            EkipCan.active = false;
+        }
+        else
+        {
+            if (Instance == null)
+            {
+                Instance = this;
+                this.gameObject.active = true;
+                Top.active = true;
+                EkipCan.active = true;
+                DontDestroyOnLoad(this.gameObject);
+                DontDestroyOnLoad(Top);
+                DontDestroyOnLoad(EkipCan);
+            }
+            else
+            {
+                this.gameObject.active = true;
+                Top.active = true;
+                EkipCan.active = true;
+                Destroy(gameObject);
+                Destroy(Top);
+                Destroy(EkipCan);
+            }
         }
     }
     public void MusicStart(AudioClip clip)
@@ -32,14 +57,14 @@ public class Music : MonoBehaviour
     }
     public void FlamentOpenSettings()
     {
-        if(FlamentSettings.GetInteger("Open/Close") == 0)
+        if (FlamentSettings.GetInteger("Open/Close") == 0)
         {
             FlamentSettings.SetInteger("Open/Close", 1);
             FlamentSettingsMusic.active = true;
             FlamentLeader.active = false;
             PlayerName.text = GlobalKullanıcıBilgileri._OyuncuIsim;
         }
-        else if(FlamentSettings.GetInteger("Open/Close") == 1)
+        else if (FlamentSettings.GetInteger("Open/Close") == 1)
         {
             FlamentSettings.SetInteger("Open/Close", 2);
             FlamentSettingsMusic.active = false;
@@ -52,7 +77,7 @@ public class Music : MonoBehaviour
             FlamentLeader.active = false;
             PlayerName.text = GlobalKullanıcıBilgileri._OyuncuIsim;
         }
-        
+
     }
     public void FlamentOpenLeaderBoard()
     {

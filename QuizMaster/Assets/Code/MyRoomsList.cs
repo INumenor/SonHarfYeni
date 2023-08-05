@@ -44,41 +44,48 @@ public class MyRoomsList : MonoBehaviour
     {
         string jsonString = fixJson(req);
         LobbySQL[] lobby = JsonHelper.FromJson<LobbySQL>(jsonString);
-        RoomName.GetComponent<Text>().text = "Oda İsmi :" + lobby[0].RoomName.ToString();
-
-        string[] nokta = { ";;;" };
-        string[] players = lobby[0].Players.Split(nokta, System.StringSplitOptions.RemoveEmptyEntries);
-
-        RoomPlayers.GetComponent<Text>().text = "Oyuncu Sayısı/Oda Limiti :" + players.Length + "/" + lobby[0].NumberOfPeople;
-        RoomType.GetComponent<Text>().text = lobby[0].isPrivate.ToString();
-        isTime.GetComponent<Text>().text = lobby[0].Time.ToString();
-        PuanType.GetComponent<Text>().text = lobby[0].PointType.ToString();
-        Button.name = lobby[0].RoomKey;
-
-        CopyButton = Button;
-        for (int i = 1; i < lobby.Length; i++)
+        if(lobby.Length > 0)
         {
-            GameObject clone = Instantiate(CopyButton, new Vector3(CopyButton.transform.position.x, CopyButton.transform.position.y - 1.4f, CopyButton.transform.position.z), CopyButton.transform.rotation);
-            Transform parentTransform = clone.transform;
-            GameObject firstChild = parentTransform.GetChild(0).gameObject;
-            GameObject secondChild = parentTransform.GetChild(1).gameObject;
-            GameObject thridChild = parentTransform.GetChild(2).gameObject;
-            GameObject fourthChild = parentTransform.GetChild(3).gameObject;
-            GameObject fifthChild = parentTransform.GetChild(4).gameObject;
+            RoomName.GetComponent<Text>().text = "Oda İsmi :" + lobby[0].RoomName.ToString();
 
-            firstChild.GetComponent<Text>().text = "Oda İsmi :" + lobby[i].RoomName.ToString();
-            string[] cloneplayers = lobby[i].Players.Split(nokta, System.StringSplitOptions.RemoveEmptyEntries);
-            secondChild.GetComponent<Text>().text = "Oyuncu Sayısı/Oda Limiti :" + cloneplayers.Length + "/" + lobby[i].NumberOfPeople;
-            thridChild.GetComponent<Text>().text = lobby[i].isPrivate.ToString();
-            fourthChild.GetComponent<Text>().text = lobby[i].Time.ToString();
-            fifthChild.GetComponent<Text>().text = lobby[i].PointType.ToString();
-            clone.name = lobby[i].RoomKey;
-            clone.GetComponent<Button>().onClick.Equals(clone);
+            string[] nokta = { ";;;" };
+            string[] players = lobby[0].Players.Split(nokta, System.StringSplitOptions.RemoveEmptyEntries);
 
-            clone.transform.parent = Content.transform;
-            clone.transform.localScale = new Vector3(0.7160821f, 3.184572f, 1);
-            CopyButton = clone;
-            clones.Add(clone);
+            RoomPlayers.GetComponent<Text>().text = "Oyuncu Sayısı/Oda Limiti :" + players.Length + "/" + lobby[0].NumberOfPeople;
+            RoomType.GetComponent<Text>().text = lobby[0].isPrivate.ToString();
+            isTime.GetComponent<Text>().text = lobby[0].Time.ToString();
+            PuanType.GetComponent<Text>().text = lobby[0].PointType.ToString();
+            Button.name = lobby[0].RoomKey;
+
+            CopyButton = Button;
+            for (int i = 1; i < lobby.Length; i++)
+            {
+                GameObject clone = Instantiate(CopyButton, new Vector3(CopyButton.transform.position.x, CopyButton.transform.position.y - 1.4f, CopyButton.transform.position.z), CopyButton.transform.rotation);
+                Transform parentTransform = clone.transform;
+                GameObject firstChild = parentTransform.GetChild(0).gameObject;
+                GameObject secondChild = parentTransform.GetChild(1).gameObject;
+                GameObject thridChild = parentTransform.GetChild(2).gameObject;
+                GameObject fourthChild = parentTransform.GetChild(3).gameObject;
+                GameObject fifthChild = parentTransform.GetChild(4).gameObject;
+
+                firstChild.GetComponent<Text>().text = "Oda İsmi :" + lobby[i].RoomName.ToString();
+                string[] cloneplayers = lobby[i].Players.Split(nokta, System.StringSplitOptions.RemoveEmptyEntries);
+                secondChild.GetComponent<Text>().text = "Oyuncu Sayısı/Oda Limiti :" + cloneplayers.Length + "/" + lobby[i].NumberOfPeople;
+                thridChild.GetComponent<Text>().text = lobby[i].isPrivate.ToString();
+                fourthChild.GetComponent<Text>().text = lobby[i].Time.ToString();
+                fifthChild.GetComponent<Text>().text = lobby[i].PointType.ToString();
+                clone.name = lobby[i].RoomKey;
+                clone.GetComponent<Button>().onClick.Equals(clone);
+
+                clone.transform.parent = Content.transform;
+                clone.transform.localScale = new Vector3(0.9f, 3.15f, 1);
+                CopyButton = clone;
+                clones.Add(clone);
+            }
+        }
+        else
+        {
+            Button.active = false;
         }
 
     }

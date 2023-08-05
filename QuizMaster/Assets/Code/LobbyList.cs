@@ -97,7 +97,7 @@ public class LobbyList : MonoBehaviour
             clone.GetComponent<Button>().onClick.Equals(clone);
 
             clone.transform.parent = Content.transform;
-            clone.transform.localScale = new Vector3(0.8375f, 1.596456f, 1);
+            clone.transform.localScale = new Vector3(1, 1.4f, 1);
             CopyButton = clone;
             clones.Add(clone);
         }
