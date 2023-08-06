@@ -27,7 +27,7 @@ public class MyRoomsList : MonoBehaviour
 
     void Start()
     {
-        StartCoroutine(Post("http://localhost:8080/ServiceKelimeOyunu/Service/getActiveRooms",processJson(GlobalKullanıcıBilgileri._OyuncuIsim)));
+        StartCoroutine(Post("http://appjam.inseres.com/servicekelimeoyunu/Service/getActiveRooms", processJson(GlobalKullanıcıBilgileri._OyuncuIsim)));
     }
     IEnumerator Post(string url, string bodyJsonString)
     {
@@ -46,15 +46,36 @@ public class MyRoomsList : MonoBehaviour
         LobbySQL[] lobby = JsonHelper.FromJson<LobbySQL>(jsonString);
         if(lobby.Length > 0)
         {
-            RoomName.GetComponent<Text>().text = "Oda İsmi :" + lobby[0].RoomName.ToString();
+            RoomName.GetComponent<Text>().text = lobby[0].RoomName.ToString();
 
             string[] nokta = { ";;;" };
             string[] players = lobby[0].Players.Split(nokta, System.StringSplitOptions.RemoveEmptyEntries);
 
-            RoomPlayers.GetComponent<Text>().text = "Oyuncu Sayısı/Oda Limiti :" + players.Length + "/" + lobby[0].NumberOfPeople;
-            RoomType.GetComponent<Text>().text = lobby[0].isPrivate.ToString();
-            isTime.GetComponent<Text>().text = lobby[0].Time.ToString();
-            PuanType.GetComponent<Text>().text = lobby[0].PointType.ToString();
+            RoomPlayers.GetComponent<Text>().text = "Oyuncu Sayısı :" + players.Length + "/" + lobby[0].NumberOfPeople;
+            if(lobby[0].isPrivate == true)
+            {
+                RoomType.GetComponent<Text>().text = "Herkese Açık";
+            }
+            else
+            {
+                RoomType.GetComponent<Text>().text = "Özel";
+            }
+            if(lobby[0].Time == 0)
+            {
+                isTime.GetComponent<Text>().text = "Süresiz";
+            }
+            else
+            {
+                isTime.GetComponent<Text>().text = "Süre : " + lobby[0].Time.ToString();
+            }
+            if(lobby[0].PointType == true)
+            {
+                PuanType.GetComponent<Text>().text = "Kelime Zorluğu";
+            }
+            else
+            {
+                PuanType.GetComponent<Text>().text = "Kelime Uzunluğu";
+            }
             Button.name = lobby[0].RoomKey;
 
             CopyButton = Button;
@@ -68,12 +89,34 @@ public class MyRoomsList : MonoBehaviour
                 GameObject fourthChild = parentTransform.GetChild(3).gameObject;
                 GameObject fifthChild = parentTransform.GetChild(4).gameObject;
 
-                firstChild.GetComponent<Text>().text = "Oda İsmi :" + lobby[i].RoomName.ToString();
+                firstChild.GetComponent<Text>().text = lobby[i].RoomName.ToString();
                 string[] cloneplayers = lobby[i].Players.Split(nokta, System.StringSplitOptions.RemoveEmptyEntries);
-                secondChild.GetComponent<Text>().text = "Oyuncu Sayısı/Oda Limiti :" + cloneplayers.Length + "/" + lobby[i].NumberOfPeople;
-                thridChild.GetComponent<Text>().text = lobby[i].isPrivate.ToString();
-                fourthChild.GetComponent<Text>().text = lobby[i].Time.ToString();
-                fifthChild.GetComponent<Text>().text = lobby[i].PointType.ToString();
+                secondChild.GetComponent<Text>().text = "Oyuncu Sayısı :" + cloneplayers.Length + "/" + lobby[i].NumberOfPeople;
+                Debug.Log(lobby[i].isPrivate);
+                if (lobby[i].isPrivate == true)
+                {
+                    thridChild.GetComponent<Text>().text = "Herkese Açık";
+                }
+                else
+                {
+                    thridChild.GetComponent<Text>().text = "Özel";
+                }
+                if (lobby[i].Time == 0)
+                {
+                    fourthChild.GetComponent<Text>().text = "Süresiz";
+                }
+                else
+                {
+                    fourthChild.GetComponent<Text>().text = "Süre : " + lobby[i].Time.ToString();
+                }
+                if (lobby[i].PointType == true)
+                {
+                    fifthChild.GetComponent<Text>().text = "Kelime Zorluğu";
+                }
+                else
+                {
+                    fifthChild.GetComponent<Text>().text = "Kelime Uzunluğu";
+                }
                 clone.name = lobby[i].RoomKey;
                 clone.GetComponent<Button>().onClick.Equals(clone);
 

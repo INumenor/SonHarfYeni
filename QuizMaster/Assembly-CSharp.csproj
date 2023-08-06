@@ -100,8 +100,10 @@
     <Compile Include="Assets\Code\RoomKeyControl.cs" />
     <Compile Include="Assets\Code\SahneGecis.cs" />
     <Compile Include="Assets\Code\SendWord.cs" />
+    <Compile Include="Assets\Code\SetMinusPuan.cs" />
     <Compile Include="Assets\Code\SingleGameLeaderBoard.cs" />
     <Compile Include="Assets\Code\TestWord.cs" />
+    <Compile Include="Assets\Code\TimeBreakQuit.cs" />
     <Compile Include="Assets\Code\Turn.cs" />
     <Compile Include="Assets\Code\V2\BotGameStatus.cs" />
     <Compile Include="Assets\Code\V2\BİlgiButonuAktifleştirme.cs" />

@@ -22,6 +22,10 @@ public class SahneGecis : MonoBehaviour
         RawImage.active = false;
         StartCoroutine(Delay(0.30f, SahneNumarasi));
     }
+    public void AnaSahne(int SahneNumarasi)
+    {
+        SceneManager.LoadScene(SahneNumarasi);
+    }
 
     IEnumerator Delay(float delay , int SahneNumarasi)
     {

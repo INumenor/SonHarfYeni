@@ -8,13 +8,15 @@ using TMPro;
 
 public class RegisterPlayer : MonoBehaviour
 {
+    [SerializeField] GameObject PopUpReg;
+    [SerializeField] Animator PopUp;
     string Player,Email,Password;
     string deviceUniqueIdentifier;
     private void Start()
     {
          deviceUniqueIdentifier = SystemInfo.deviceUniqueIdentifier;
     }
-    public void PostData() => StartCoroutine(Post("http://localhost:8080/ServiceKelimeOyunu/Service/registerPlayer", processJson(Player,Email,Password,deviceUniqueIdentifier)));
+    public void PostData() => StartCoroutine(Post("http://appjam.inseres.com/servicekelimeoyunu/Service/registerPlayer", processJson(Player,Email,Password,deviceUniqueIdentifier)));
     IEnumerator Post(string url, string bodyJsonString)
     {
         var request = new UnityWebRequest(url, "POST");
@@ -29,7 +31,10 @@ public class RegisterPlayer : MonoBehaviour
     private void processJsonData(string _url)
     {
         Status status = JsonUtility.FromJson<Status>(_url);
-        Debug.Log(status.status);
+        if(status.status == deviceUniqueIdentifier)
+        {
+            PopUp.SetInteger("Open/ClosePopup", 1);
+        }
     }
 
     private string processJson(string Player,string Email ,string Password,string UniqId)

@@ -5,8 +5,8 @@ using System.IO;
 using System.Runtime.InteropServices;
 public class PaylaşButton : MonoBehaviour
 {
-    string subject = "Batuhan Çar";
-    string body = "Geldim";
+    string subject = "Mesaj Yolla";
+    string body = "Yollandı";
     public void OnAndroidTextSharingClick()
     {
         StartCoroutine(ShareAndroidText());

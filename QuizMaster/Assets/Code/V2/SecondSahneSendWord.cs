@@ -8,10 +8,10 @@ using TMPro;
 public class SecondSahneSendWord : MonoBehaviour
 {
     string send;
-    [SerializeField] TextMeshProUGUI Uyarı;
+    [SerializeField] Text Uyarı;
     [SerializeField] GameObject Gönder;
     static string Stats;
-    public void PostData() => StartCoroutine(Post("http://localhost:8080/ServiceKelimeOyunu/Service/OnlineSendWord", processJson(GlobalKullanıcıBilgileri._OyuncuIsim, GlobalKullanıcıBilgileri._Room_key, send)));
+    public void PostData() => StartCoroutine(Post("http://appjam.inseres.com/servicekelimeoyunu/Service/OnlineSendWord", processJson(GlobalKullanıcıBilgileri._OyuncuIsim, GlobalKullanıcıBilgileri._Room_key, send)));
 
     IEnumerator Post(string url, string bodyJsonString)
     {
@@ -28,6 +28,7 @@ public class SecondSahneSendWord : MonoBehaviour
     private void processJsonData(string _url)
     {
         Status stat = JsonUtility.FromJson<Status>(_url);
+        Debug.Log(stat.status);
         if(stat.status == "wordWasUsed")
         {
             Uyarı.enabled = true;

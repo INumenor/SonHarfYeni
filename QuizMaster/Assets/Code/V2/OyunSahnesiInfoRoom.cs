@@ -17,7 +17,7 @@ public class OyunSahnesiInfoRoom : MonoBehaviour
     [SerializeField] GameObject Gönder;
     [SerializeField] GameObject Puan;
     [SerializeField] Text GameTime;
-    [SerializeField] TextMeshProUGUI Uyarı;
+    [SerializeField] Text Uyarı;
     [SerializeField] TextMeshProUGUI Cevap2;
     [SerializeField] GameObject Timer;
     float iTime;
@@ -33,11 +33,12 @@ public class OyunSahnesiInfoRoom : MonoBehaviour
     float Length;
 
     float timeLeft = 10.0f;
-
-    private void Start()
+    int iFlag = 0;
+    public void Start()
     {
         if (GlobalKullanıcıBilgileri._iRoomGameTime > 0)
         {
+            Debug.Log(GlobalKullanıcıBilgileri._iRoomGameTime);
             Timer.active = true;
         }
     }
@@ -47,18 +48,28 @@ public class OyunSahnesiInfoRoom : MonoBehaviour
         
         if (timeLeft < 0)
         {
-            StartCoroutine(Post("http://localhost:8080/ServiceKelimeOyunu/Service/InfoRoom", processJson(GlobalKullanıcıBilgileri._OyuncuIsim, GlobalKullanıcıBilgileri._Room_key)));
+            StartCoroutine(Post("http://appjam.inseres.com/servicekelimeoyunu/Service/InfoRoom", processJson(GlobalKullanıcıBilgileri._OyuncuIsim, GlobalKullanıcıBilgileri._Room_key)));
             timeLeft = 3.0f;
         }
-        if(Timer.active = true && Ballons.Count > 0)
+        if(Timer.active == true && Ballons.Count > 0)
         { 
             iTime -= Time.deltaTime;
             GameTime.text = (Convert.ToInt32(iTime)).ToString();
+            if (iTime <= 0 && GameObject.Find("SıraSahibi").GetComponent<Text>().text == GlobalKullanıcıBilgileri._OyuncuIsim && iFlag == 2)
+            {
+                GameObject.Find("Game").GetComponent<TimeBreakQuit>().PostData();
+            }
+            else if (iTime <= 0 && GameObject.Find("SıraSahibi").GetComponent<Text>().text == GlobalKullanıcıBilgileri._OyuncuIsim)
+            {
+                iFlag += 1;
+                iTime = Convert.ToSingle(GlobalKullanıcıBilgileri._iRoomGameTime);
+                GameObject.Find("Game").GetComponent<SetMinusPuan>().PostData();
+            }
         }
     }
     //public void InfoAl()
     //{
-    //    StartCoroutine(Post("http://localhost:8080/ServiceKelimeOyunu/Service/InfoRoom", processJson(GlobalKullanıcıBilgileri._OyuncuIsim, GlobalKullanıcıBilgileri._Room_key)));
+    //    StartCoroutine(Post("http://appjam.inseres.com/servicekelimeoyunu/Service/InfoRoom", processJson(GlobalKullanıcıBilgileri._OyuncuIsim, GlobalKullanıcıBilgileri._Room_key)));
     //}
     IEnumerator Post(string url, string bodyJsonString)
     {
@@ -77,7 +88,7 @@ public class OyunSahnesiInfoRoom : MonoBehaviour
     {
         InfoRoomSec infoRoom = JsonUtility.FromJson<InfoRoomSec>(_url);
         GlobalKullanıcıBilgileri._playerTurn = infoRoom.playersTurn;
-        if (GameObject.Find("SıraSahibi").GetComponent<TextMeshProUGUI>().text != infoRoom.playersTurn)
+        if (GameObject.Find("SıraSahibi").GetComponent<Text>().text != infoRoom.playersTurn)
         {
             for (int i = 0; i < Ballons.Count; i++)
             {
@@ -87,9 +98,8 @@ public class OyunSahnesiInfoRoom : MonoBehaviour
             SecondSahneSendWord._Stats = null;
             BallonsCreate(infoRoom.word);
             iTime = Convert.ToSingle(GlobalKullanıcıBilgileri._iRoomGameTime);
-            Debug.Log("Time : " + iTime);
-            Debug.Log("Time2 : " + GlobalKullanıcıBilgileri._iRoomGameTime);
-            GameObject.Find("SıraSahibi").GetComponent<TextMeshProUGUI>().text = infoRoom.playersTurn;
+            GameObject.Find("SıraSahibi").GetComponent<Text>().text = infoRoom.playersTurn;
+            iFlag = 0;
         }
         if (infoRoom.kisiSayisi < 2) 
         {
@@ -118,7 +128,7 @@ public class OyunSahnesiInfoRoom : MonoBehaviour
             Gönder.active = false;
             Uyarı.enabled = false;
         }
-        Puan.GetComponent<TextMeshProUGUI>().text = infoRoom.puan.ToString();
+        Puan.GetComponent<Text>().text = infoRoom.puan.ToString();
     }
 
     private string processJson(string _url, string room_key)
@@ -157,7 +167,7 @@ public class OyunSahnesiInfoRoom : MonoBehaviour
             GameObject copyyenikutucuk = Instantiate(Kutucuk, new Vector3(-2.5f, 0, 0), Quaternion.identity);
             copyyenikutucuk.transform.parent = Canvas.transform;
             copyyenikutucuk.transform.position = new Vector3(left, 2f, 0);
-            copyyenikutucuk.transform.localScale = new Vector3(1.75f, 5, 1);
+            copyyenikutucuk.transform.localScale = new Vector3(7,21, 1);
             copyyenikutucuk.GetComponentInChildren<Text>().text = karakterler[0].ToString();
             Ballons.Add(copyyenikutucuk);
             for (int i = 1; i < karakterler.Length; i++)
@@ -169,7 +179,7 @@ public class OyunSahnesiInfoRoom : MonoBehaviour
                 GameObject yenikutucuk = Instantiate(copyyenikutucuk, new Vector3(-2.5f, 0, 0), Quaternion.identity);
                 yenikutucuk.transform.parent = Canvas.transform;
                 yenikutucuk.transform.position = new Vector3(copyyenikutucuk.transform.position.x + 0.5f, 2f, 0);
-                yenikutucuk.transform.localScale = new Vector3(1.75f, 5, 1);
+                yenikutucuk.transform.localScale = new Vector3(7, 21, 1);
                 yenikutucuk.GetComponentInChildren<Text>().text = karakterler[i].ToString();
                 copyyenikutucuk = yenikutucuk;
                 Ballons.Add(copyyenikutucuk);
@@ -192,7 +202,7 @@ public class OyunSahnesiInfoRoom : MonoBehaviour
             GameObject copyyenikutucuk = Instantiate(Kutucuk, new Vector3(-2.5f, 0, 0), Quaternion.identity);
             copyyenikutucuk.transform.parent = Canvas.transform;
             copyyenikutucuk.transform.position = new Vector3(left, 2f, 0);
-            copyyenikutucuk.transform.localScale = new Vector3(1.75f, 5, 1);
+            copyyenikutucuk.transform.localScale = new Vector3(7, 21, 1);
             copyyenikutucuk.GetComponentInChildren<Text>().text = karakterler[0].ToString();
             Ballons.Add(copyyenikutucuk);
             for (int i = 1; i < karakterler.Length; i++)
@@ -204,7 +214,7 @@ public class OyunSahnesiInfoRoom : MonoBehaviour
                 GameObject yenikutucuk = Instantiate(copyyenikutucuk, new Vector3(-2.5f, 0, 0), Quaternion.identity);
                 yenikutucuk.transform.parent = Canvas.transform;
                 yenikutucuk.transform.position = new Vector3(copyyenikutucuk.transform.position.x + 0.5f, 2f, 0);
-                yenikutucuk.transform.localScale = new Vector3(1.75f, 5, 1);
+                yenikutucuk.transform.localScale = new Vector3(7, 21, 1);
                 yenikutucuk.GetComponentInChildren<Text>().text = karakterler[i].ToString();
                 copyyenikutucuk = yenikutucuk;
                 Ballons.Add(copyyenikutucuk);
@@ -219,7 +229,7 @@ public class OyunSahnesiInfoRoom : MonoBehaviour
             GameObject copyyenikutucuk = Instantiate(Kutucuk, new Vector3(-2.5f, 0, 0), Quaternion.identity);
             copyyenikutucuk.transform.parent = Canvas.transform;
             copyyenikutucuk.transform.position = new Vector3(left, 1.5f, 0);
-            copyyenikutucuk.transform.localScale = new Vector3(1.75f, 5, 1);
+            copyyenikutucuk.transform.localScale = new Vector3(7, 21, 1);
             copyyenikutucuk.GetComponentInChildren<Text>().text = karakterler[10].ToString();
             Ballons.Add(copyyenikutucuk);
             for (int i = 11; i < karakterler.Length; i++)
@@ -228,7 +238,7 @@ public class OyunSahnesiInfoRoom : MonoBehaviour
                 GameObject yenikutucuk = Instantiate(copyyenikutucuk, new Vector3(-2.5f, 0, 0), Quaternion.identity);
                 yenikutucuk.transform.parent = Canvas.transform;
                 yenikutucuk.transform.position = new Vector3(copyyenikutucuk.transform.position.x + 0.5f, 1.5f, 0);
-                yenikutucuk.transform.localScale = new Vector3(1.75f, 5, 1);
+                yenikutucuk.transform.localScale = new Vector3(7, 21,1);
                 yenikutucuk.GetComponentInChildren<Text>().text = karakterler[i].ToString();
                 copyyenikutucuk = yenikutucuk;
                 Ballons.Add(copyyenikutucuk);
@@ -243,7 +253,7 @@ public class OyunSahnesiInfoRoom : MonoBehaviour
             GameObject copyyenikutucuk = Instantiate(Kutucuk, new Vector3(-2.5f, 0, 0), Quaternion.identity);
             copyyenikutucuk.transform.parent = Canvas.transform;
             copyyenikutucuk.transform.position = new Vector3(left, 1.5f, 0);
-            copyyenikutucuk.transform.localScale = new Vector3(1.75f, 5, 1);
+            copyyenikutucuk.transform.localScale = new Vector3(7, 21, 1);
             copyyenikutucuk.GetComponentInChildren<Text>().text = karakterler[10].ToString();
             Ballons.Add(copyyenikutucuk);
             for (int i = 11; i < karakterler.Length; i++)
@@ -252,7 +262,7 @@ public class OyunSahnesiInfoRoom : MonoBehaviour
                 GameObject yenikutucuk = Instantiate(copyyenikutucuk, new Vector3(-2.5f, 0, 0), Quaternion.identity);
                 yenikutucuk.transform.parent = Canvas.transform;
                 yenikutucuk.transform.position = new Vector3(copyyenikutucuk.transform.position.x + 0.5f, 1.5f, 0);
-                yenikutucuk.transform.localScale = new Vector3(1.75f, 5, 1);
+                yenikutucuk.transform.localScale = new Vector3(7, 21, 1);
                 yenikutucuk.GetComponentInChildren<Text>().text = karakterler[i].ToString();
                 copyyenikutucuk = yenikutucuk;
                 Ballons.Add(copyyenikutucuk);
@@ -269,7 +279,7 @@ public class OyunSahnesiInfoRoom : MonoBehaviour
         }
         for (int i = 0; i < Ballons.Count; i++)
         {
-            Ballons[i].transform.DOScale(new Vector3(1.75f, 5, 1), 1f).SetEase(Ease.OutBounce);
+            Ballons[i].transform.DOScale(new Vector3(7, 21, 1), 1f).SetEase(Ease.OutBounce);
             yield return new WaitForSeconds(0.25f);
         }
     }

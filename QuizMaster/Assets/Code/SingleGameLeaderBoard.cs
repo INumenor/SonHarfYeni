@@ -15,7 +15,7 @@ public class SingleGameLeaderBoard : MonoBehaviour
     [SerializeField] GameObject ThirdPlayer;
     void Start()
     {
-        StartCoroutine(Post("http://localhost:8080/ServiceKelimeOyunu/Service/getSingleLeaderboard", "{}"));
+        StartCoroutine(Post("http://appjam.inseres.com/servicekelimeoyunu/Service/getSingleLeaderboard", "{}"));
     }
     IEnumerator Post(string url, string bodyJsonString)
     {

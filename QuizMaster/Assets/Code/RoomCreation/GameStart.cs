@@ -26,7 +26,7 @@ public class GameStart : MonoBehaviour
    
     void Start()
     {
-        StartCoroutine(Post("http://localhost:8080/ServiceKelimeOyunu/Service/getRoomsSettingsInfo", processJson(GlobalKullanıcıBilgileri._OyuncuIsim,GlobalKullanıcıBilgileri._Room_key)));
+        StartCoroutine(Post("http://appjam.inseres.com/servicekelimeoyunu/Service/getRoomsSettingsInfo", processJson(GlobalKullanıcıBilgileri._OyuncuIsim,GlobalKullanıcıBilgileri._Room_key)));
     }
     void Update()
     {
@@ -34,13 +34,13 @@ public class GameStart : MonoBehaviour
         timeLeft -= Time.deltaTime;
         if (timeLeft < 0)
         {
-            StartCoroutine(Post("http://localhost:8080/ServiceKelimeOyunu/Service/getRoomsSettingsInfo", processJson(GlobalKullanıcıBilgileri._OyuncuIsim, GlobalKullanıcıBilgileri._Room_key)));
+            StartCoroutine(Post("http://appjam.inseres.com/servicekelimeoyunu/Service/getRoomsSettingsInfo", processJson(GlobalKullanıcıBilgileri._OyuncuIsim, GlobalKullanıcıBilgileri._Room_key)));
             timeLeft = 5.0f;
         }
     }
     public void LobbyQuit()
     {
-        StartCoroutine(Post("http://localhost:8080/ServiceKelimeOyunu/Service/quitGame", processJson(GlobalKullanıcıBilgileri._OyuncuIsim, GlobalKullanıcıBilgileri._Room_key)));
+        StartCoroutine(Post("http://appjam.inseres.com/servicekelimeoyunu/Service/quitGame", processJson(GlobalKullanıcıBilgileri._OyuncuIsim, GlobalKullanıcıBilgileri._Room_key)));
         GlobalKullanıcıBilgileri._Room_key = null;
         SceneManager.LoadScene(1);
     }
@@ -66,12 +66,26 @@ public class GameStart : MonoBehaviour
         }
         if (players.Length != clones.Count)
         {
-            RoomName.GetComponent<Text>().text = "Oda İsmi :" + lobby.RoomName.ToString();
+            RoomName.GetComponent<Text>().text = lobby.RoomName.ToString();
             RoomKey.GetComponent<Text>().text = lobby.RoomKey.ToString();
             RoomPlayers.GetComponent<Text>().text = "Oyuncu Sayısı/Oda Limiti :" + players.Length + "/" + lobby.NumberOfPeople;
-            RoomType.GetComponent<Text>().text = lobby.isPrivate.ToString();
-            isTime.GetComponent<Text>().text = lobby.Time.ToString();
-            PuanType.GetComponent<Text>().text = lobby.PointType.ToString();
+            isTime.GetComponent<Text>().text = "Tur Süresi : " + lobby.Time.ToString();
+            if (lobby.isPrivate = true)
+            {
+                RoomType.GetComponent<Text>().text = "Herkese Açık Oda";
+            }
+            else
+            {
+                RoomType.GetComponent<Text>().text = "Özel Oda";
+            }
+            if(lobby.PointType == true)
+            {
+                PuanType.GetComponent<Text>().text = "Oyun Tipi : Kelime Zorluğu";
+            }
+            else
+            {
+                PuanType.GetComponent<Text>().text = "Oyun Tipi : Kelime Uzunluğu";
+            }
             CopyRawImage = RawImage;
             for (int i = 0; i < clones.Count; i++)
             {

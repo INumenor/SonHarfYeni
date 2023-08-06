@@ -15,7 +15,7 @@ public class WordLenghtLeaderBoard : MonoBehaviour
     [SerializeField] GameObject ThirdPlayer;
     void Start()
     {
-        StartCoroutine(Post("http://localhost:8080/ServiceKelimeOyunu/Service/getLenghtLeaderboard", "{}"));
+        StartCoroutine(Post("http://appjam.inseres.com/servicekelimeoyunu/Service/getLenghtLeaderboard", "{}"));
     }
     IEnumerator Post(string url, string bodyJsonString)
     {

@@ -15,7 +15,7 @@ public class WordHardestLeaderBoard : MonoBehaviour
     [SerializeField] GameObject ThirdPlayer;
     void Start()
     {
-        StartCoroutine(Post("http://localhost:8080/ServiceKelimeOyunu/Service/getHardLeaderboard", "{}"));
+        StartCoroutine(Post("http://appjam.inseres.com/servicekelimeoyunu/Service/getHardLeaderboard", "{}"));
     }
     IEnumerator Post(string url, string bodyJsonString)
     {

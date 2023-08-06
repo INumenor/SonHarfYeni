@@ -13,7 +13,7 @@ public class QuickLogin : MonoBehaviour
     private void Start()
     {
         string deviceUniqueIdentifier = SystemInfo.deviceUniqueIdentifier;
-        StartCoroutine(Post("http://localhost:8080/ServiceKelimeOyunu/Service/logincontrol", processJson(deviceUniqueIdentifier)));
+        StartCoroutine(Post("http://appjam.inseres.com/servicekelimeoyunu/Service/logincontrol", processJson(deviceUniqueIdentifier)));
     }
 
     IEnumerator Post(string url, string bodyJsonString)

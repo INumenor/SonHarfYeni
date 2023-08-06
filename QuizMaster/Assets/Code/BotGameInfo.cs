@@ -15,8 +15,8 @@ public class BotGameInfo : MonoBehaviour
     [SerializeField] GameObject Cevap;
     [SerializeField] GameObject Gönder;
     [SerializeField] Text GameTime;
-    [SerializeField] TextMeshProUGUI Puan;
-    [SerializeField] TextMeshProUGUI Uyarı;
+    [SerializeField] Text Puan;
+    [SerializeField] Text Uyarı;
     [SerializeField] GameObject PopUp;
     float iTime = 100f;
 
@@ -33,7 +33,7 @@ public class BotGameInfo : MonoBehaviour
     int Flag;
     void Start()
     {
-        StartCoroutine(Post("http://localhost:8080/ServiceKelimeOyunu/Service/InfoBotRoom", processJson(GlobalKullanıcıBilgileri._OyuncuIsim, GlobalKullanıcıBilgileri._Room_key)));
+        StartCoroutine(Post("http://appjam.inseres.com/servicekelimeoyunu/Service/InfoBotRoom", processJson(GlobalKullanıcıBilgileri._OyuncuIsim, GlobalKullanıcıBilgileri._Room_key)));
     }
 
     float timeLeft = 5.0f;
@@ -45,12 +45,12 @@ public class BotGameInfo : MonoBehaviour
             iTime -= Time.deltaTime;
             if (timeLeft < 0)
             {
-                StartCoroutine(Post("http://localhost:8080/ServiceKelimeOyunu/Service/InfoBotRoom", processJson(GlobalKullanıcıBilgileri._OyuncuIsim, GlobalKullanıcıBilgileri._Room_key)));
+                StartCoroutine(Post("http://appjam.inseres.com/servicekelimeoyunu/Service/InfoBotRoom", processJson(GlobalKullanıcıBilgileri._OyuncuIsim, GlobalKullanıcıBilgileri._Room_key)));
                 timeLeft = 1.5f;
             }
             GameTime.text = (Convert.ToInt32(iTime)).ToString();
         }
-        if(iTime < 0)
+        if(iTime <= 0)
         {
             PopUp.active = true;
             GlobalKullanıcıBilgileri._Room_key = null;
@@ -142,7 +142,7 @@ public class BotGameInfo : MonoBehaviour
             GameObject copyyenikutucuk = Instantiate(Kutucuk, new Vector3(-2.5f, 0, 0), Quaternion.identity);
             copyyenikutucuk.transform.parent = Canvas.transform;
             copyyenikutucuk.transform.position = new Vector3(left, 2f, 0);
-            copyyenikutucuk.transform.localScale = new Vector3(1.75f, 5, 1);
+            copyyenikutucuk.transform.localScale = new Vector3(7f, 21, 1);
             copyyenikutucuk.GetComponentInChildren<Text>().text = karakterler[0].ToString();
             Ballons.Add(copyyenikutucuk);
             for (int i = 1; i < karakterler.Length; i++)
@@ -154,7 +154,7 @@ public class BotGameInfo : MonoBehaviour
                 GameObject yenikutucuk = Instantiate(copyyenikutucuk, new Vector3(-2.5f, 0, 0), Quaternion.identity);
                 yenikutucuk.transform.parent = Canvas.transform;
                 yenikutucuk.transform.position = new Vector3(copyyenikutucuk.transform.position.x + 0.5f, 2f, 0);
-                yenikutucuk.transform.localScale = new Vector3(1.75f, 5, 1);
+                yenikutucuk.transform.localScale = new Vector3(7f, 21, 1);
                 yenikutucuk.GetComponentInChildren<Text>().text = karakterler[i].ToString();
                 copyyenikutucuk = yenikutucuk;
                 Ballons.Add(copyyenikutucuk);
@@ -177,7 +177,7 @@ public class BotGameInfo : MonoBehaviour
             GameObject copyyenikutucuk = Instantiate(Kutucuk, new Vector3(-2.5f, 0, 0), Quaternion.identity);
             copyyenikutucuk.transform.parent = Canvas.transform;
             copyyenikutucuk.transform.position = new Vector3(left, 2f, 0);
-            copyyenikutucuk.transform.localScale = new Vector3(1.75f, 5, 1);
+            copyyenikutucuk.transform.localScale = new Vector3(7f, 21, 1);
             copyyenikutucuk.GetComponentInChildren<Text>().text = karakterler[0].ToString();
             Ballons.Add(copyyenikutucuk);
             for (int i = 1; i < karakterler.Length; i++)
@@ -189,7 +189,7 @@ public class BotGameInfo : MonoBehaviour
                 GameObject yenikutucuk = Instantiate(copyyenikutucuk, new Vector3(-2.5f, 0, 0), Quaternion.identity);
                 yenikutucuk.transform.parent = Canvas.transform;
                 yenikutucuk.transform.position = new Vector3(copyyenikutucuk.transform.position.x + 0.5f, 2f, 0);
-                yenikutucuk.transform.localScale = new Vector3(1.75f, 5, 1);
+                yenikutucuk.transform.localScale = new Vector3(7f, 21, 1);
                 yenikutucuk.GetComponentInChildren<Text>().text = karakterler[i].ToString();
                 copyyenikutucuk = yenikutucuk;
                 Ballons.Add(copyyenikutucuk);
@@ -204,7 +204,7 @@ public class BotGameInfo : MonoBehaviour
             GameObject copyyenikutucuk = Instantiate(Kutucuk, new Vector3(-2.5f, 0, 0), Quaternion.identity);
             copyyenikutucuk.transform.parent = Canvas.transform;
             copyyenikutucuk.transform.position = new Vector3(left, 1.5f, 0);
-            copyyenikutucuk.transform.localScale = new Vector3(1.75f, 5, 1);
+            copyyenikutucuk.transform.localScale = new Vector3(7f, 21, 1);
             copyyenikutucuk.GetComponentInChildren<Text>().text = karakterler[10].ToString();
             Ballons.Add(copyyenikutucuk);
             for (int i = 11; i < karakterler.Length; i++)
@@ -213,7 +213,7 @@ public class BotGameInfo : MonoBehaviour
                 GameObject yenikutucuk = Instantiate(copyyenikutucuk, new Vector3(-2.5f, 0, 0), Quaternion.identity);
                 yenikutucuk.transform.parent = Canvas.transform;
                 yenikutucuk.transform.position = new Vector3(copyyenikutucuk.transform.position.x + 0.5f, 1.5f, 0);
-                yenikutucuk.transform.localScale = new Vector3(1.75f, 5, 1);
+                yenikutucuk.transform.localScale = new Vector3(7f, 21, 1);
                 yenikutucuk.GetComponentInChildren<Text>().text = karakterler[i].ToString();
                 copyyenikutucuk = yenikutucuk;
                 Ballons.Add(copyyenikutucuk);
@@ -228,7 +228,7 @@ public class BotGameInfo : MonoBehaviour
             GameObject copyyenikutucuk = Instantiate(Kutucuk, new Vector3(-2.5f, 0, 0), Quaternion.identity);
             copyyenikutucuk.transform.parent = Canvas.transform;
             copyyenikutucuk.transform.position = new Vector3(left, 1.5f, 0);
-            copyyenikutucuk.transform.localScale = new Vector3(1.75f, 5, 1);
+            copyyenikutucuk.transform.localScale = new Vector3(7f, 21, 1);
             copyyenikutucuk.GetComponentInChildren<Text>().text = karakterler[10].ToString();
             Ballons.Add(copyyenikutucuk);
             for (int i = 11; i < karakterler.Length; i++)
@@ -237,7 +237,7 @@ public class BotGameInfo : MonoBehaviour
                 GameObject yenikutucuk = Instantiate(copyyenikutucuk, new Vector3(-2.5f, 0, 0), Quaternion.identity);
                 yenikutucuk.transform.parent = Canvas.transform;
                 yenikutucuk.transform.position = new Vector3(copyyenikutucuk.transform.position.x + 0.5f, 1.5f, 0);
-                yenikutucuk.transform.localScale = new Vector3(1.75f, 5, 1);
+                yenikutucuk.transform.localScale = new Vector3(7f, 21, 1);
                 yenikutucuk.GetComponentInChildren<Text>().text = karakterler[i].ToString();
                 copyyenikutucuk = yenikutucuk;
                 Ballons.Add(copyyenikutucuk);
@@ -254,7 +254,7 @@ public class BotGameInfo : MonoBehaviour
         }
         for (int i = 0; i < Ballons.Count; i++)
         {
-            Ballons[i].transform.DOScale(new Vector3(1.75f, 5, 1), 1f).SetEase(Ease.OutBounce);
+            Ballons[i].transform.DOScale(new Vector3(7f, 21, 1), 1f).SetEase(Ease.OutBounce);
             yield return new WaitForSeconds(0.25f);
         }
     }

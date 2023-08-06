@@ -9,11 +9,11 @@ using TMPro;
 public class BotGamePost : MonoBehaviour
 {
     string send;
-    [SerializeField] TextMeshProUGUI Uyarı;
+    [SerializeField] Text Uyarı;
     [SerializeField] GameObject Gönder;
     static string Stats ;
 
-    public void PostData() => StartCoroutine(Post("http://localhost:8080/ServiceKelimeOyunu/Service/SinglebotRandomWord", processJson(GlobalKullanıcıBilgileri._OyuncuIsim, GlobalKullanıcıBilgileri._Room_key, send)));
+    public void PostData() => StartCoroutine(Post("http://appjam.inseres.com/servicekelimeoyunu/Service/SinglebotRandomWord", processJson(GlobalKullanıcıBilgileri._OyuncuIsim, GlobalKullanıcıBilgileri._Room_key, send)));
 
     IEnumerator Post(string url, string bodyJsonString)
     {
@@ -51,6 +51,7 @@ public class BotGamePost : MonoBehaviour
             Uyarı.enabled = true;
             Gönder.active = false;
         }
+        StartCoroutine(Wait());
     }
 
     private string processJson(string _url, string room_key, string word)
@@ -89,5 +90,10 @@ public class BotGamePost : MonoBehaviour
         {
             Stats = value;
         }
+    }
+    IEnumerator Wait()
+    {
+        yield return new WaitForSeconds(1);
+        Uyarı.enabled = false;
     }
 }

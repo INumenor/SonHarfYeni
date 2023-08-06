@@ -15,7 +15,7 @@ public class QuitUser : MonoBehaviour
     {
         deviceUniqueIdentifier = SystemInfo.deviceUniqueIdentifier;
     }
-    public void PostData() => StartCoroutine(Post("http://localhost:8080/ServiceKelimeOyunu/Service/quitcontrol", processJson(deviceUniqueIdentifier)));
+    public void PostData() => StartCoroutine(Post("http://appjam.inseres.com/servicekelimeoyunu/Service/quitcontrol", processJson(deviceUniqueIdentifier)));
     IEnumerator Post(string url, string bodyJsonString)
     {
         var request = new UnityWebRequest(url, "POST");

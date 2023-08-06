@@ -99,7 +99,7 @@ public class Settings : MonoBehaviour
     {
         if (RoomNameText != null && PrivatePublicButton != null && TimeButton != null && NumberOfPeople != null && PointType != null)
         {
-            StartCoroutine(Post("http://localhost:8080/ServiceKelimeOyunu/Service/CreateOnlineRoom", processJson(RoomNameText,GlobalKullanıcıBilgileri._OyuncuIsim, PrivatePublicButton, TimeButton, NumberOfPeople, PointType, TimeBreak))); ;
+            StartCoroutine(Post("http://appjam.inseres.com/servicekelimeoyunu/Service/CreateOnlineRoom", processJson(RoomNameText,GlobalKullanıcıBilgileri._OyuncuIsim, PrivatePublicButton, TimeButton, NumberOfPeople, PointType, TimeBreak))); ;
         }
     }
     IEnumerator Post(string url, string bodyJsonString)
