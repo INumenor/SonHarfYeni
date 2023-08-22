@@ -11,11 +11,13 @@ public class LoginPlayer : MonoBehaviour
 {
     string Player,Password;
     string deviceUniqueIdentifier;
+    [SerializeField] Animator PopUp;
+    [SerializeField] Text PopUpText;
     private void Start()
     {
         deviceUniqueIdentifier = SystemInfo.deviceUniqueIdentifier;
     }
-    public void PostData() => StartCoroutine(Post("http://appjam.inseres.com/servicekelimeoyunu/Service/loginplayer", processJson(Player, Password, deviceUniqueIdentifier)));
+    public void PostData() => StartCoroutine(Post("http://localhost:8080/ServiceKelimeOyunu/Service/loginplayer", processJson(Player, Password, deviceUniqueIdentifier)));
     IEnumerator Post(string url, string bodyJsonString)
     {
         var request = new UnityWebRequest(url, "POST");
@@ -35,6 +37,11 @@ public class LoginPlayer : MonoBehaviour
             GlobalKullanıcıBilgileri._OyuncuIsim = Player;
             SceneManager.LoadScene(1);
         }
+        else if (status.status == "fail")
+        {
+            PopUpText.text = "Kullanıcı Adınız ya da Şifreniz Yanlış";
+        }
+        PopUp.SetTrigger("Open/ClosePopUp");
     }
 
     private string processJson(string Player, string Password,string UniqId)

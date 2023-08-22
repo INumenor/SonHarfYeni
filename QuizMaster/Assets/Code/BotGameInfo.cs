@@ -46,7 +46,7 @@ public class BotGameInfo : MonoBehaviour
             if (timeLeft < 0)
             {
                 StartCoroutine(Post("http://appjam.inseres.com/servicekelimeoyunu/Service/InfoBotRoom", processJson(GlobalKullanıcıBilgileri._OyuncuIsim, GlobalKullanıcıBilgileri._Room_key)));
-                timeLeft = 1.5f;
+                timeLeft = 3f;
             }
             GameTime.text = (Convert.ToInt32(iTime)).ToString();
         }
