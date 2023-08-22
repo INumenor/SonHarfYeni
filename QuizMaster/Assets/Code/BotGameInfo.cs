@@ -131,13 +131,13 @@ public class BotGameInfo : MonoBehaviour
             {
                 aralık = 0.5f * (10 / 2);
                 aralık = right - aralık;
-                left = -2.5f + (aralık) + 0.25f;
+                left = -2.5f + (aralık) + 0.30f;
             }
             else
             {
                 aralık = 0.5f * (Length / 2);
                 aralık = right - aralık;
-                left = -2.5f + (aralık) + 0.25f;
+                left = -2.5f + (aralık) + 0.30f;
             }
             GameObject copyyenikutucuk = Instantiate(Kutucuk, new Vector3(-2.5f, 0, 0), Quaternion.identity);
             copyyenikutucuk.transform.parent = Canvas.transform;
@@ -166,13 +166,13 @@ public class BotGameInfo : MonoBehaviour
             {
                 aralık = 0.5f * (10 / 2);
                 aralık = right - aralık;
-                left = -2.5f + (aralık) + 0.25f;
+                left = -2.5f + (aralık) + 0.30f;
             }
             else
             {
                 aralık = 0.5f * (Length / 2);
                 aralık = right - aralık;
-                left = -2.5f + (aralık) + 0.25f;
+                left = -2.5f + (aralık) + 0.30f;
             }
             GameObject copyyenikutucuk = Instantiate(Kutucuk, new Vector3(-2.5f, 0, 0), Quaternion.identity);
             copyyenikutucuk.transform.parent = Canvas.transform;
@@ -199,7 +199,7 @@ public class BotGameInfo : MonoBehaviour
         {
             aralık = 0.5f * ((Length - 10) / 2);
             aralık = right - aralık;
-            left = -2.5f + (aralık) + 0.25f;
+            left = -2.5f + (aralık) + 0.30f;
 
             GameObject copyyenikutucuk = Instantiate(Kutucuk, new Vector3(-2.5f, 0, 0), Quaternion.identity);
             copyyenikutucuk.transform.parent = Canvas.transform;
@@ -223,7 +223,7 @@ public class BotGameInfo : MonoBehaviour
         {
             aralık = 0.5f * ((Length - 10) / 2);
             aralık = right - aralık;
-            left = -2.5f + (aralık) + 0.25f;
+            left = -2.5f + (aralık) + 0.30f;
 
             GameObject copyyenikutucuk = Instantiate(Kutucuk, new Vector3(-2.5f, 0, 0), Quaternion.identity);
             copyyenikutucuk.transform.parent = Canvas.transform;
