@@ -10,13 +10,14 @@ public class RegisterPlayer : MonoBehaviour
 {
     [SerializeField] GameObject PopUpReg;
     [SerializeField] Animator PopUp;
+    [SerializeField] Text PopUpText;
     string Player,Email,Password;
     string deviceUniqueIdentifier;
     private void Start()
     {
          deviceUniqueIdentifier = SystemInfo.deviceUniqueIdentifier;
     }
-    public void PostData() => StartCoroutine(Post("http://appjam.inseres.com/servicekelimeoyunu/Service/registerPlayer", processJson(Player,Email,Password,deviceUniqueIdentifier)));
+    public void PostData() => StartCoroutine(Post("http://localhost:8080/ServiceKelimeOyunu/Service/registerPlayer", processJson(Player,Email,Password,deviceUniqueIdentifier)));
     IEnumerator Post(string url, string bodyJsonString)
     {
         var request = new UnityWebRequest(url, "POST");
@@ -31,10 +32,28 @@ public class RegisterPlayer : MonoBehaviour
     private void processJsonData(string _url)
     {
         Status status = JsonUtility.FromJson<Status>(_url);
-        if(status.status == deviceUniqueIdentifier)
+        Debug.Log(status.status);
+        if(status.status == "success")
         {
-            PopUp.SetInteger("Open/ClosePopup", 1);
+            PopUpText.text = "Kayıt Oldun";
         }
+        else if (status.status == "error")
+        {
+            PopUpText.text = "Kayıt Başarısız Oldu";
+        }
+        else if(status.status == "there is an account")
+        {
+            PopUpText.text = "Böyle bir hesap var";
+        }
+        else if(status.status == "Empty")
+        {
+            PopUpText.text = "Alanları Boş Bırakmayınız";
+        }
+        else
+        {
+            PopUpText.text = "Sistemde Bir sıkıntı oluştu";
+        }
+        PopUp.SetTrigger("Open/ClosePopup");
     }
 
     private string processJson(string Player,string Email ,string Password,string UniqId)
