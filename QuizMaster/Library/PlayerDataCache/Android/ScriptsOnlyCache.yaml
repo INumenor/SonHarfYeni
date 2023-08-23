@@ -69,14 +69,6 @@ ScriptsOnlyBuild:
     - TMPro.TMP_StyleSheet
     - TMPro.TMP_SubMeshUI
     - TMPro.TextMeshProUGUI
-    UnityEditor.Graphs.dll:
-    - UnityEditor.Graphs.AnimationBlendTree.Graph
-    - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
-    - UnityEditor.Graphs.AnimationStateMachine.Graph
-    - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.StateNode
-    - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
     - UnityEditor.TestTools.TestRunner.TestListCacheData
@@ -671,8 +663,6 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 15394}
     - Class: 114
-      Script: {instanceID: 15426}
-    - Class: 114
       Script: {instanceID: 15526}
     - Class: 114
       Script: {instanceID: 15596}
@@ -1029,7 +1019,7 @@ ScriptsOnlyBuild:
     className: PixelPerfectCamera
   - hash:
       serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+      Hash: 3957f7efdefa7ca0c955987f75eb26b3
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: LoginPlayer
@@ -1245,7 +1235,7 @@ ScriptsOnlyBuild:
     className: GetMetod
   - hash:
       serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+      Hash: 38436f0316b1fa864499c63ceb33a591
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: RegisterPlayer
@@ -1689,4 +1679,4 @@ ScriptsOnlyBuild:
   - Assets/Scenes/GameLobby.unity
   - Assets/Scenes/RoomCreation.unity
   - Assets/Scenes/SonHarfSecondScene.unity
-  playerPath: C:/Users/Batuh/Desktop/denemeversiyonV2_060823.apk
+  playerPath: C:/Users/Batuh/Desktop/denemeversiyonV4_230823.apk

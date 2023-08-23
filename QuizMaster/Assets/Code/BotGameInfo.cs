@@ -129,15 +129,15 @@ public class BotGameInfo : MonoBehaviour
         {
             if (Length > 10)
             {
-                aralık = 0.5f * (10 / 2);
-                aralık = right - aralık;
-                left = -2.5f + (aralık) + 0.30f;
+                aralık = 0.40f * (10 / 2);
+                //aralık = right - aralık;
+                left = -aralık + 0.2f;
             }
             else
             {
-                aralık = 0.5f * (Length / 2);
-                aralık = right - aralık;
-                left = -2.5f + (aralık) + 0.30f;
+                aralık = 0.40f * (Length / 2);
+                //aralık = right - aralık;
+                left = -aralık + 0.2f;
             }
             GameObject copyyenikutucuk = Instantiate(Kutucuk, new Vector3(-2.5f, 0, 0), Quaternion.identity);
             copyyenikutucuk.transform.parent = Canvas.transform;
@@ -153,7 +153,7 @@ public class BotGameInfo : MonoBehaviour
                 }
                 GameObject yenikutucuk = Instantiate(copyyenikutucuk, new Vector3(-2.5f, 0, 0), Quaternion.identity);
                 yenikutucuk.transform.parent = Canvas.transform;
-                yenikutucuk.transform.position = new Vector3(copyyenikutucuk.transform.position.x + 0.5f, 2f, 0);
+                yenikutucuk.transform.position = new Vector3(copyyenikutucuk.transform.position.x + 0.4f, 2f, 0);
                 yenikutucuk.transform.localScale = new Vector3(7f, 21, 1);
                 yenikutucuk.GetComponentInChildren<Text>().text = karakterler[i].ToString();
                 copyyenikutucuk = yenikutucuk;
@@ -164,15 +164,15 @@ public class BotGameInfo : MonoBehaviour
         {
             if (Length > 10)
             {
-                aralık = 0.5f * (10 / 2);
-                aralık = right - aralık;
-                left = -2.5f + (aralık) + 0.30f;
+                aralık = 0.40f * (10 / 2);
+                //aralık = right - aralık;
+                left = -aralık + 0.2f;
             }
             else
             {
-                aralık = 0.5f * (Length / 2);
-                aralık = right - aralık;
-                left = -2.5f + (aralık) + 0.30f;
+                aralık = 0.40f * (Length / 2);
+                //aralık = right - aralık;
+                left = -aralık + 0.2f;
             }
             GameObject copyyenikutucuk = Instantiate(Kutucuk, new Vector3(-2.5f, 0, 0), Quaternion.identity);
             copyyenikutucuk.transform.parent = Canvas.transform;
@@ -188,7 +188,7 @@ public class BotGameInfo : MonoBehaviour
                 }
                 GameObject yenikutucuk = Instantiate(copyyenikutucuk, new Vector3(-2.5f, 0, 0), Quaternion.identity);
                 yenikutucuk.transform.parent = Canvas.transform;
-                yenikutucuk.transform.position = new Vector3(copyyenikutucuk.transform.position.x + 0.5f, 2f, 0);
+                yenikutucuk.transform.position = new Vector3(copyyenikutucuk.transform.position.x + 0.4f, 2f, 0);
                 yenikutucuk.transform.localScale = new Vector3(7f, 21, 1);
                 yenikutucuk.GetComponentInChildren<Text>().text = karakterler[i].ToString();
                 copyyenikutucuk = yenikutucuk;
@@ -197,9 +197,9 @@ public class BotGameInfo : MonoBehaviour
         }
         if (Length > 10 && Length % 2 == 0)
         {
-            aralık = 0.5f * ((Length - 10) / 2);
-            aralık = right - aralık;
-            left = -2.5f + (aralık) + 0.30f;
+            aralık = 0.40f * ((Length - 10) / 2);
+            //aralık = right - aralık;
+            left = -aralık + 0.2f;
 
             GameObject copyyenikutucuk = Instantiate(Kutucuk, new Vector3(-2.5f, 0, 0), Quaternion.identity);
             copyyenikutucuk.transform.parent = Canvas.transform;
@@ -212,7 +212,7 @@ public class BotGameInfo : MonoBehaviour
 
                 GameObject yenikutucuk = Instantiate(copyyenikutucuk, new Vector3(-2.5f, 0, 0), Quaternion.identity);
                 yenikutucuk.transform.parent = Canvas.transform;
-                yenikutucuk.transform.position = new Vector3(copyyenikutucuk.transform.position.x + 0.5f, 1.5f, 0);
+                yenikutucuk.transform.position = new Vector3(copyyenikutucuk.transform.position.x + 0.4f, 1.5f, 0);
                 yenikutucuk.transform.localScale = new Vector3(7f, 21, 1);
                 yenikutucuk.GetComponentInChildren<Text>().text = karakterler[i].ToString();
                 copyyenikutucuk = yenikutucuk;
@@ -221,9 +221,9 @@ public class BotGameInfo : MonoBehaviour
         }
         else if (Length > 10 && Length % 2 == 1)
         {
-            aralık = 0.5f * ((Length - 10) / 2);
-            aralık = right - aralık;
-            left = -2.5f + (aralık) + 0.30f;
+            aralık = 0.40f * ((Length - 10) / 2);
+            //aralık = right - aralık;
+            left = -aralık + 0.2f;
 
             GameObject copyyenikutucuk = Instantiate(Kutucuk, new Vector3(-2.5f, 0, 0), Quaternion.identity);
             copyyenikutucuk.transform.parent = Canvas.transform;
@@ -236,7 +236,7 @@ public class BotGameInfo : MonoBehaviour
 
                 GameObject yenikutucuk = Instantiate(copyyenikutucuk, new Vector3(-2.5f, 0, 0), Quaternion.identity);
                 yenikutucuk.transform.parent = Canvas.transform;
-                yenikutucuk.transform.position = new Vector3(copyyenikutucuk.transform.position.x + 0.5f, 1.5f, 0);
+                yenikutucuk.transform.position = new Vector3(copyyenikutucuk.transform.position.x + 0.4f, 1.5f, 0);
                 yenikutucuk.transform.localScale = new Vector3(7f, 21, 1);
                 yenikutucuk.GetComponentInChildren<Text>().text = karakterler[i].ToString();
                 copyyenikutucuk = yenikutucuk;
