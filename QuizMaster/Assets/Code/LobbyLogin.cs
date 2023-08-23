@@ -33,7 +33,7 @@ public class LobbyLogin : MonoBehaviour
             {
                 GlobalKullanıcıBilgileri._Room_key = obj.name;
                 Debug.Log(GlobalKullanıcıBilgileri._Room_key);
-                StartCoroutine(Post("http://localhost:8080/ServiceKelimeOyunu/Service/JoinRoom", processJson(GlobalKullanıcıBilgileri._OyuncuIsim, GlobalKullanıcıBilgileri._Room_key)));
+                StartCoroutine(Post("http://appjam.inseres.com/servicekelimeoyunu/Service/JoinRoom", processJson(GlobalKullanıcıBilgileri._OyuncuIsim, GlobalKullanıcıBilgileri._Room_key)));
             }
             else
             {
@@ -59,7 +59,7 @@ public class LobbyLogin : MonoBehaviour
         {
             GlobalKullanıcıBilgileri._Room_key = GlobalKullanıcıBilgileri.LoginRoom_key;
             GlobalKullanıcıBilgileri.LoginRoom_key = null;
-            StartCoroutine(Post("http://localhost:8080/ServiceKelimeOyunu/Service/JoinRoom", processJson(GlobalKullanıcıBilgileri._OyuncuIsim, GlobalKullanıcıBilgileri._Room_key)));
+            StartCoroutine(Post("http://appjam.inseres.com/servicekelimeoyunu/Service/JoinRoom", processJson(GlobalKullanıcıBilgileri._OyuncuIsim, GlobalKullanıcıBilgileri._Room_key)));
         }
     }
     IEnumerator Post(string url, string bodyJsonString)

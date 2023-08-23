@@ -32,7 +32,7 @@ public class OyunSahnesiInfoRoom : MonoBehaviour
     float aralık;
     float Length;
 
-    float timeLeft = 10.0f;
+    float timeLeft = 5.0f;
     int iFlag = 0;
     public void Start()
     {
@@ -80,7 +80,6 @@ public class OyunSahnesiInfoRoom : MonoBehaviour
         request.SetRequestHeader("Content-Type", "application/json");
         yield return request.SendWebRequest();
         Debug.Log("Status Code: " + request.responseCode);
-        //Debug.Log(request.downloadHandler.text);
         processJsonData(request.downloadHandler.text);
 
     }
@@ -145,7 +144,7 @@ public class OyunSahnesiInfoRoom : MonoBehaviour
         public string playerName;
         public string roomKey;
     }
-    
+
     void BallonsCreate(string word)
     {
         char[] karakterler = word.ToCharArray();
@@ -154,20 +153,20 @@ public class OyunSahnesiInfoRoom : MonoBehaviour
         {
             if (Length > 10)
             {
-                aralık = 0.5f * (10 / 2);
-                aralık = right - aralık;
-                left = -2.5f + (aralık) + 0.25f;
+                aralık = 0.40f * (10 / 2);
+                //aralık = right - aralık;
+                left = -aralık + 0.2f;
             }
             else
             {
-                aralık = 0.5f * (Length / 2);
-                aralık = right - aralık;
-                left = -2.5f + (aralık) + 0.25f;
+                aralık = 0.40f * (Length / 2);
+                //aralık = right - aralık;
+                left = -aralık + 0.2f;
             }
             GameObject copyyenikutucuk = Instantiate(Kutucuk, new Vector3(-2.5f, 0, 0), Quaternion.identity);
             copyyenikutucuk.transform.parent = Canvas.transform;
             copyyenikutucuk.transform.position = new Vector3(left, 2f, 0);
-            copyyenikutucuk.transform.localScale = new Vector3(7,21, 1);
+            copyyenikutucuk.transform.localScale = new Vector3(7f, 21, 1);
             copyyenikutucuk.GetComponentInChildren<Text>().text = karakterler[0].ToString();
             Ballons.Add(copyyenikutucuk);
             for (int i = 1; i < karakterler.Length; i++)
@@ -178,8 +177,8 @@ public class OyunSahnesiInfoRoom : MonoBehaviour
                 }
                 GameObject yenikutucuk = Instantiate(copyyenikutucuk, new Vector3(-2.5f, 0, 0), Quaternion.identity);
                 yenikutucuk.transform.parent = Canvas.transform;
-                yenikutucuk.transform.position = new Vector3(copyyenikutucuk.transform.position.x + 0.5f, 2f, 0);
-                yenikutucuk.transform.localScale = new Vector3(7, 21, 1);
+                yenikutucuk.transform.position = new Vector3(copyyenikutucuk.transform.position.x + 0.4f, 2f, 0);
+                yenikutucuk.transform.localScale = new Vector3(7f, 21, 1);
                 yenikutucuk.GetComponentInChildren<Text>().text = karakterler[i].ToString();
                 copyyenikutucuk = yenikutucuk;
                 Ballons.Add(copyyenikutucuk);
@@ -189,20 +188,20 @@ public class OyunSahnesiInfoRoom : MonoBehaviour
         {
             if (Length > 10)
             {
-                aralık = 0.5f * (10 / 2);
-                aralık = right - aralık;
-                left = -2.5f + (aralık) + 0.25f;
+                aralık = 0.40f * (10 / 2);
+                //aralık = right - aralık;
+                left = -aralık + 0.2f;
             }
             else
             {
-                aralık = 0.5f * (Length / 2);
-                aralık = right - aralık;
-                left = -2.5f + (aralık) + 0.25f;
+                aralık = 0.40f * (Length / 2);
+                //aralık = right - aralık;
+                left = -aralık + 0.2f;
             }
             GameObject copyyenikutucuk = Instantiate(Kutucuk, new Vector3(-2.5f, 0, 0), Quaternion.identity);
             copyyenikutucuk.transform.parent = Canvas.transform;
             copyyenikutucuk.transform.position = new Vector3(left, 2f, 0);
-            copyyenikutucuk.transform.localScale = new Vector3(7, 21, 1);
+            copyyenikutucuk.transform.localScale = new Vector3(7f, 21, 1);
             copyyenikutucuk.GetComponentInChildren<Text>().text = karakterler[0].ToString();
             Ballons.Add(copyyenikutucuk);
             for (int i = 1; i < karakterler.Length; i++)
@@ -213,8 +212,8 @@ public class OyunSahnesiInfoRoom : MonoBehaviour
                 }
                 GameObject yenikutucuk = Instantiate(copyyenikutucuk, new Vector3(-2.5f, 0, 0), Quaternion.identity);
                 yenikutucuk.transform.parent = Canvas.transform;
-                yenikutucuk.transform.position = new Vector3(copyyenikutucuk.transform.position.x + 0.5f, 2f, 0);
-                yenikutucuk.transform.localScale = new Vector3(7, 21, 1);
+                yenikutucuk.transform.position = new Vector3(copyyenikutucuk.transform.position.x + 0.4f, 2f, 0);
+                yenikutucuk.transform.localScale = new Vector3(7f, 21, 1);
                 yenikutucuk.GetComponentInChildren<Text>().text = karakterler[i].ToString();
                 copyyenikutucuk = yenikutucuk;
                 Ballons.Add(copyyenikutucuk);
@@ -222,14 +221,14 @@ public class OyunSahnesiInfoRoom : MonoBehaviour
         }
         if (Length > 10 && Length % 2 == 0)
         {
-            aralık = 0.5f * ((Length - 10) / 2);
-            aralık = right - aralık;
-            left = -2.5f + (aralık) + 0.25f;
+            aralık = 0.40f * ((Length - 10) / 2);
+            //aralık = right - aralık;
+            left = -aralık + 0.2f;
 
             GameObject copyyenikutucuk = Instantiate(Kutucuk, new Vector3(-2.5f, 0, 0), Quaternion.identity);
             copyyenikutucuk.transform.parent = Canvas.transform;
             copyyenikutucuk.transform.position = new Vector3(left, 1.5f, 0);
-            copyyenikutucuk.transform.localScale = new Vector3(7, 21, 1);
+            copyyenikutucuk.transform.localScale = new Vector3(7f, 21, 1);
             copyyenikutucuk.GetComponentInChildren<Text>().text = karakterler[10].ToString();
             Ballons.Add(copyyenikutucuk);
             for (int i = 11; i < karakterler.Length; i++)
@@ -237,8 +236,8 @@ public class OyunSahnesiInfoRoom : MonoBehaviour
 
                 GameObject yenikutucuk = Instantiate(copyyenikutucuk, new Vector3(-2.5f, 0, 0), Quaternion.identity);
                 yenikutucuk.transform.parent = Canvas.transform;
-                yenikutucuk.transform.position = new Vector3(copyyenikutucuk.transform.position.x + 0.5f, 1.5f, 0);
-                yenikutucuk.transform.localScale = new Vector3(7, 21,1);
+                yenikutucuk.transform.position = new Vector3(copyyenikutucuk.transform.position.x + 0.4f, 1.5f, 0);
+                yenikutucuk.transform.localScale = new Vector3(7f, 21, 1);
                 yenikutucuk.GetComponentInChildren<Text>().text = karakterler[i].ToString();
                 copyyenikutucuk = yenikutucuk;
                 Ballons.Add(copyyenikutucuk);
@@ -246,14 +245,14 @@ public class OyunSahnesiInfoRoom : MonoBehaviour
         }
         else if (Length > 10 && Length % 2 == 1)
         {
-            aralık = 0.5f * ((Length - 10) / 2);
-            aralık = right - aralık;
-            left = -2.5f + (aralık) + 0.25f;
+            aralık = 0.40f * ((Length - 10) / 2);
+            //aralık = right - aralık;
+            left = -aralık + 0.2f;
 
             GameObject copyyenikutucuk = Instantiate(Kutucuk, new Vector3(-2.5f, 0, 0), Quaternion.identity);
             copyyenikutucuk.transform.parent = Canvas.transform;
             copyyenikutucuk.transform.position = new Vector3(left, 1.5f, 0);
-            copyyenikutucuk.transform.localScale = new Vector3(7, 21, 1);
+            copyyenikutucuk.transform.localScale = new Vector3(7f, 21, 1);
             copyyenikutucuk.GetComponentInChildren<Text>().text = karakterler[10].ToString();
             Ballons.Add(copyyenikutucuk);
             for (int i = 11; i < karakterler.Length; i++)
@@ -261,8 +260,8 @@ public class OyunSahnesiInfoRoom : MonoBehaviour
 
                 GameObject yenikutucuk = Instantiate(copyyenikutucuk, new Vector3(-2.5f, 0, 0), Quaternion.identity);
                 yenikutucuk.transform.parent = Canvas.transform;
-                yenikutucuk.transform.position = new Vector3(copyyenikutucuk.transform.position.x + 0.5f, 1.5f, 0);
-                yenikutucuk.transform.localScale = new Vector3(7, 21, 1);
+                yenikutucuk.transform.position = new Vector3(copyyenikutucuk.transform.position.x + 0.4f, 1.5f, 0);
+                yenikutucuk.transform.localScale = new Vector3(7f, 21, 1);
                 yenikutucuk.GetComponentInChildren<Text>().text = karakterler[i].ToString();
                 copyyenikutucuk = yenikutucuk;
                 Ballons.Add(copyyenikutucuk);
