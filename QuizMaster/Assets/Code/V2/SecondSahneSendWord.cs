@@ -9,6 +9,7 @@ public class SecondSahneSendWord : MonoBehaviour
 {
     string send;
     [SerializeField] Text Uyarı;
+    [SerializeField] Animator PopUp;
     [SerializeField] GameObject Gönder;
     static string Stats;
     public void PostData() => StartCoroutine(Post("http://appjam.inseres.com/servicekelimeoyunu/Service/OnlineSendWord", processJson(GlobalKullanıcıBilgileri._OyuncuIsim, GlobalKullanıcıBilgileri._Room_key, send)));
@@ -31,7 +32,7 @@ public class SecondSahneSendWord : MonoBehaviour
         if(stat.status == "wordWasUsed")
         {
             Uyarı.enabled = true;
-            Uyarı.text = "Bu kelime daha önce kullanıldı";
+            Uyarı.text = "Kullanılmış kelime";
         }
         else if(stat.status == "firstLetterMatchFail")
         {
@@ -41,7 +42,7 @@ public class SecondSahneSendWord : MonoBehaviour
         else if(stat.status == "wordNotFound")
         {
             Uyarı.enabled = true;
-            Uyarı.text = "Sözlükte böyle bir kelime bulunmamaktadır.";
+            Uyarı.text = "Geçersiz kelime";
         }
         else
         {
@@ -49,6 +50,7 @@ public class SecondSahneSendWord : MonoBehaviour
             Uyarı.enabled = true;
             Gönder.active = false;
         }
+        PopUp.SetTrigger("Anim");
         //OyunSahnesiInfoRoom InfoAl = new OyunSahnesiInfoRoom();
         //InfoAl.InfoAl();
     }
