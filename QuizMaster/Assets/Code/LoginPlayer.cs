@@ -17,7 +17,7 @@ public class LoginPlayer : MonoBehaviour
     {
         deviceUniqueIdentifier = SystemInfo.deviceUniqueIdentifier;
     }
-    public void PostData() => StartCoroutine(Post("http://appjam.inseres.com/servicekelimeoyunu/Service/loginplayer", processJson(Player, Password, deviceUniqueIdentifier)));
+    public void PostData() => StartCoroutine(Post("http://localhost:8080/ServiceKelimeOyunu/Service/loginplayer", processJson(Player, Password, deviceUniqueIdentifier)));
     IEnumerator Post(string url, string bodyJsonString)
     {
         var request = new UnityWebRequest(url, "POST");
@@ -32,6 +32,7 @@ public class LoginPlayer : MonoBehaviour
     private void processJsonData(string _url)
     {
         Status status = JsonUtility.FromJson<Status>(_url);
+        Debug.Log(status.status);
         if("success" == status.status)
         {
             GlobalKullanıcıBilgileri._OyuncuIsim = Player;
@@ -40,6 +41,10 @@ public class LoginPlayer : MonoBehaviour
         else if (status.status == "fail")
         {
             PopUpText.text = "Kullanıcı Adınız ya da Şifreniz Yanlış";
+        }
+        else if (status.status == "dontjoin")
+        {
+            PopUpText.text = "Hesap Başka Bir Cihazda Açık";
         }
         PopUp.SetTrigger("Open/ClosePopUp");
     }
