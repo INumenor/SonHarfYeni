@@ -10,6 +10,7 @@ public class BotGamePost : MonoBehaviour
 {
     string send;
     [SerializeField] Text Uyarı;
+    [SerializeField] Animator PopUp;
     [SerializeField] GameObject Gönder;
     static string Stats ;
 
@@ -32,7 +33,7 @@ public class BotGamePost : MonoBehaviour
         if (stat.status == "wordWasUsed")
         {
             Uyarı.enabled = true;
-            Uyarı.text = "Bu kelime daha önce kullanıldı";
+            Uyarı.text = "Kullanılmış kelime";
         }
         else if (stat.status == "firstLetterMatchFail")
         {
@@ -42,7 +43,7 @@ public class BotGamePost : MonoBehaviour
         else if (stat.status == "wordNotFound")
         {
             Uyarı.enabled = true;
-            Uyarı.text = "Sözlükte böyle bir kelime bulunmamaktadır.";
+            Uyarı.text = "Geçersiz kelime";
         }
         else if(stat.status == "success")
         {
@@ -51,7 +52,7 @@ public class BotGamePost : MonoBehaviour
             Uyarı.enabled = true;
             Gönder.active = false;
         }
-        StartCoroutine(Wait());
+        PopUp.SetTrigger("Anim");
     }
 
     private string processJson(string _url, string room_key, string word)
@@ -90,10 +91,5 @@ public class BotGamePost : MonoBehaviour
         {
             Stats = value;
         }
-    }
-    IEnumerator Wait()
-    {
-        yield return new WaitForSeconds(1);
-        Uyarı.enabled = false;
     }
 }

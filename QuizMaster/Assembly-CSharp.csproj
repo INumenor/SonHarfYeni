@@ -117,7 +117,6 @@
     <Compile Include="Assets\Code\V2\MusicSesKapamaAçma.cs" />
     <Compile Include="Assets\Code\V2\MüzikKapama.cs" />
     <Compile Include="Assets\Code\V2\NameStok.cs" />
-    <Compile Include="Assets\Code\V2\Notification.cs" />
     <Compile Include="Assets\Code\V2\OncekiSayfaButton.cs" />
     <Compile Include="Assets\Code\V2\OyunSahnesiInfoRoom.cs" />
     <Compile Include="Assets\Code\V2\OyunYaratInfoRoom.cs" />

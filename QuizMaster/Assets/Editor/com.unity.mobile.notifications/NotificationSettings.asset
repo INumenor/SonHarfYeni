@@ -22,14 +22,12 @@ MonoBehaviour:
     - UnityRemoteNotificationForegroundPresentationOptions
     - UnityUseAPSReleaseEnvironment
     - UnityUseLocationNotificationTrigger
-    - UnityAPSReleaseEnvironment
     values:
     - True
     - 7
     - False
     - False
     - -1
-    - False
     - False
     - False
   AndroidNotificationEditorSettingsValues:
@@ -41,10 +39,4 @@ MonoBehaviour:
     - False
     - False
     - com.unity3d.player.UnityPlayerActivity
-  TrackedResourceAssets:
-  - Id: buyuk
-    Type: 1
-    Asset: {fileID: 2800000, guid: 30437391d9b9a2941848654d3c3134c9, type: 3}
-  - Id: kucuk
-    Type: 0
-    Asset: {fileID: 2800000, guid: c703740e070d9d6428b1cd0fcb405316, type: 3}
+  TrackedResourceAssets: []
