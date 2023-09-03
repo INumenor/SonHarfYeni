@@ -26,7 +26,7 @@ public class GameStart : MonoBehaviour
    
     void Start()
     {
-        StartCoroutine(Post("http://appjam.inseres.com/servicekelimeoyunu/Service/getRoomsSettingsInfo", processJson(GlobalKullanıcıBilgileri._OyuncuIsim,GlobalKullanıcıBilgileri._Room_key)));
+        StartCoroutine(Post("https://appjam.inseres.com/servicekelimeoyunu/Service/getRoomsSettingsInfo", processJson(GlobalKullanıcıBilgileri._OyuncuIsim,GlobalKullanıcıBilgileri._Room_key)));
     }
     void Update()
     {
@@ -34,13 +34,13 @@ public class GameStart : MonoBehaviour
         timeLeft -= Time.deltaTime;
         if (timeLeft < 0)
         {
-            StartCoroutine(Post("http://appjam.inseres.com/servicekelimeoyunu/Service/getRoomsSettingsInfo", processJson(GlobalKullanıcıBilgileri._OyuncuIsim, GlobalKullanıcıBilgileri._Room_key)));
+            StartCoroutine(Post("https://appjam.inseres.com/servicekelimeoyunu/Service/getRoomsSettingsInfo", processJson(GlobalKullanıcıBilgileri._OyuncuIsim, GlobalKullanıcıBilgileri._Room_key)));
             timeLeft = 5.0f;
         }
     }
     public void LobbyQuit()
     {
-        StartCoroutine(Post("http://appjam.inseres.com/servicekelimeoyunu/Service/quitGame", processJson(GlobalKullanıcıBilgileri._OyuncuIsim, GlobalKullanıcıBilgileri._Room_key)));
+        StartCoroutine(Post("https://appjam.inseres.com/servicekelimeoyunu/Service/quitGame", processJson(GlobalKullanıcıBilgileri._OyuncuIsim, GlobalKullanıcıBilgileri._Room_key)));
         GlobalKullanıcıBilgileri._Room_key = null;
         SceneManager.LoadScene(1);
     }

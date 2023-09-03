@@ -48,7 +48,7 @@ public class OyunSahnesiInfoRoom : MonoBehaviour
         
         if (timeLeft < 0)
         {
-            StartCoroutine(Post("http://appjam.inseres.com/servicekelimeoyunu/Service/InfoRoom", processJson(GlobalKullanıcıBilgileri._OyuncuIsim, GlobalKullanıcıBilgileri._Room_key)));
+            StartCoroutine(Post("https://appjam.inseres.com/servicekelimeoyunu/Service/InfoRoom", processJson(GlobalKullanıcıBilgileri._OyuncuIsim, GlobalKullanıcıBilgileri._Room_key)));
             timeLeft = 3.0f;
         }
         if(Timer.active == true && Ballons.Count > 0)
@@ -69,7 +69,7 @@ public class OyunSahnesiInfoRoom : MonoBehaviour
     }
     //public void InfoAl()
     //{
-    //    StartCoroutine(Post("http://appjam.inseres.com/servicekelimeoyunu/Service/InfoRoom", processJson(GlobalKullanıcıBilgileri._OyuncuIsim, GlobalKullanıcıBilgileri._Room_key)));
+    //    StartCoroutine(Post("https://appjam.inseres.com/servicekelimeoyunu/Service/InfoRoom", processJson(GlobalKullanıcıBilgileri._OyuncuIsim, GlobalKullanıcıBilgileri._Room_key)));
     //}
     IEnumerator Post(string url, string bodyJsonString)
     {

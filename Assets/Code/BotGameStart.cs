@@ -10,7 +10,7 @@ public class BotGameStart : MonoBehaviour
 {
     public Animator Anim;
     [SerializeField] AudioSource Audio;
-    public void PostData() => StartCoroutine(Post("http://appjam.inseres.com/servicekelimeoyunu/Service/SingelStartGame", processJson(GlobalKullanıcıBilgileri._OyuncuIsim)));
+    public void PostData() => StartCoroutine(Post("https://appjam.inseres.com/servicekelimeoyunu/Service/SingelStartGame", processJson(GlobalKullanıcıBilgileri._OyuncuIsim)));
     IEnumerator Post(string url, string bodyJsonString)
     {
         var request = new UnityWebRequest(url, "POST");

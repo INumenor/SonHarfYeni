@@ -27,7 +27,7 @@ public class MyRoomsList : MonoBehaviour
 
     void Start()
     {
-        StartCoroutine(Post("http://appjam.inseres.com/servicekelimeoyunu/Service/getActiveRooms", processJson(GlobalKullanıcıBilgileri._OyuncuIsim)));
+        StartCoroutine(Post("https://appjam.inseres.com/servicekelimeoyunu/Service/getActiveRooms", processJson(GlobalKullanıcıBilgileri._OyuncuIsim)));
     }
     IEnumerator Post(string url, string bodyJsonString)
     {

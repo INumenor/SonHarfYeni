@@ -17,7 +17,7 @@ public class RegisterPlayer : MonoBehaviour
     {
          deviceUniqueIdentifier = SystemInfo.deviceUniqueIdentifier;
     }
-    public void PostData() => StartCoroutine(Post("http://appjam.inseres.com/servicekelimeoyunu/Service/registerPlayer", processJson(Player,Email,Password,deviceUniqueIdentifier)));
+    public void PostData() => StartCoroutine(Post("https://appjam.inseres.com/servicekelimeoyunu/Service/registerPlayer", processJson(Player,Email,Password,deviceUniqueIdentifier)));
     IEnumerator Post(string url, string bodyJsonString)
     {
         var request = new UnityWebRequest(url, "POST");

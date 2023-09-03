@@ -14,7 +14,7 @@ public class BotGamePost : MonoBehaviour
     [SerializeField] GameObject Gönder;
     static string Stats ;
 
-    public void PostData() => StartCoroutine(Post("http://appjam.inseres.com/servicekelimeoyunu/Service/SinglebotRandomWord", processJson(GlobalKullanıcıBilgileri._OyuncuIsim, GlobalKullanıcıBilgileri._Room_key, send)));
+    public void PostData() => StartCoroutine(Post("https://appjam.inseres.com/servicekelimeoyunu/Service/SinglebotRandomWord", processJson(GlobalKullanıcıBilgileri._OyuncuIsim, GlobalKullanıcıBilgileri._Room_key, send)));
 
     IEnumerator Post(string url, string bodyJsonString)
     {

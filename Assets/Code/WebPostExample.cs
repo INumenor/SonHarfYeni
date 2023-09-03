@@ -16,7 +16,7 @@ public class WebPostExample : MonoBehaviour
         WWWForm form = new WWWForm();
         form.AddField("", dataStr);
 
-        UnityWebRequest www = UnityWebRequest.Post("http://appjam.inseres.com/servicekelimeoyunu/Service/getRandomWord", form);
+        UnityWebRequest www = UnityWebRequest.Post("https://appjam.inseres.com/servicekelimeoyunu/Service/getRandomWord", form);
 
         yield return www.SendWebRequest();
 

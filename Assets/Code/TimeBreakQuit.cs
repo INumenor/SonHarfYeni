@@ -10,7 +10,7 @@ using TMPro;
 public class TimeBreakQuit : MonoBehaviour
 {
     [SerializeField] GameObject Canvas;
-    public void PostData() => StartCoroutine(Post("http://appjam.inseres.com/servicekelimeoyunu/Service/quitGame", processJson(GlobalKullanıcıBilgileri._OyuncuIsim, GlobalKullanıcıBilgileri._Room_key)));
+    public void PostData() => StartCoroutine(Post("https://appjam.inseres.com/servicekelimeoyunu/Service/quitGame", processJson(GlobalKullanıcıBilgileri._OyuncuIsim, GlobalKullanıcıBilgileri._Room_key)));
     IEnumerator Post(string url, string bodyJsonString)
     {
         //yield return new WaitForSeconds(5);

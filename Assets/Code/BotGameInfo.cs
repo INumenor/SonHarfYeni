@@ -33,7 +33,7 @@ public class BotGameInfo : MonoBehaviour
     int Flag;
     void Start()
     {
-        StartCoroutine(Post("http://appjam.inseres.com/servicekelimeoyunu/Service/InfoBotRoom", processJson(GlobalKullanıcıBilgileri._OyuncuIsim, GlobalKullanıcıBilgileri._Room_key)));
+        StartCoroutine(Post("https://appjam.inseres.com/servicekelimeoyunu/Service/InfoBotRoom", processJson(GlobalKullanıcıBilgileri._OyuncuIsim, GlobalKullanıcıBilgileri._Room_key)));
     }
 
     float timeLeft = 5.0f;
@@ -45,7 +45,7 @@ public class BotGameInfo : MonoBehaviour
             iTime -= Time.deltaTime;
             if (timeLeft < 0)
             {
-                StartCoroutine(Post("http://appjam.inseres.com/servicekelimeoyunu/Service/InfoBotRoom", processJson(GlobalKullanıcıBilgileri._OyuncuIsim, GlobalKullanıcıBilgileri._Room_key)));
+                StartCoroutine(Post("https://appjam.inseres.com/servicekelimeoyunu/Service/InfoBotRoom", processJson(GlobalKullanıcıBilgileri._OyuncuIsim, GlobalKullanıcıBilgileri._Room_key)));
                 timeLeft = 3f;
             }
             GameTime.text = (Convert.ToInt32(iTime)).ToString();

@@ -29,7 +29,7 @@ public class LobbyList : MonoBehaviour
 
     void Start()
     {
-        StartCoroutine(Post("http://appjam.inseres.com/servicekelimeoyunu/Service/getOpenRooms", "{}"));
+        StartCoroutine(Post("https://appjam.inseres.com/servicekelimeoyunu/Service/getOpenRooms", "{}"));
     }
     public void PostData()
     {
@@ -38,7 +38,7 @@ public class LobbyList : MonoBehaviour
             Destroy(clones[i]);
         }
         clones.Clear();
-        StartCoroutine(Post("http://appjam.inseres.com/servicekelimeoyunu/Service/getOpenRooms", "{}"));
+        StartCoroutine(Post("https://appjam.inseres.com/servicekelimeoyunu/Service/getOpenRooms", "{}"));
     }
     public void PD()
     {
@@ -47,7 +47,7 @@ public class LobbyList : MonoBehaviour
             Destroy(clones[i]);
         }
         clones.Clear();
-        StartCoroutine(Post("http://appjam.inseres.com/servicekelimeoyunu/Service/getSearchRooms", processJson(LobbySearch)));
+        StartCoroutine(Post("https://appjam.inseres.com/servicekelimeoyunu/Service/getSearchRooms", processJson(LobbySearch)));
     }
     IEnumerator Post(string url, string bodyJsonString)
     {
